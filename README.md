@@ -8,7 +8,7 @@ Find and redact Indian personal data (Aadhaar, PAN, UPI, phone, cards, bank deta
 
 ## Live demo
 
-Live demo: add the GitHub Pages link here after publishing.
+Live demo: https://anirudhkaushik0211.github.io/indiapii-guard/
 
 ## Contents
 
