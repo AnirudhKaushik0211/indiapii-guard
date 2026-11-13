@@ -1,0 +1,5142 @@
+{
+  "tool": "indiapii-guard",
+  "version": "1.0.0",
+  "schema": 1,
+  "config": {
+    "threshold": 0.5,
+    "ocrNormalise": true,
+    "quick": false,
+    "seeds": {
+      "dev": 1001,
+      "heldout": 2002,
+      "adversarial": 3003,
+      "latency": 4004
+    },
+    "targets": {
+      "dev": {
+        "gold": 120,
+        "decoys": 5
+      },
+      "heldout": {
+        "gold": 150,
+        "decoys": 5
+      },
+      "adversarial": {
+        "gold": 60,
+        "decoys": 20
+      }
+    }
+  },
+  "templates": {
+    "dev": {
+      "file": "eval/templates-dev.cjs",
+      "sha256": "2c6ce1391ce81325378ec7ce759c88c62334545f010f7aa732cfbe3dfc26b41d",
+      "positive": 50,
+      "negative": 12
+    },
+    "heldout": {
+      "file": "eval/templates-heldout.cjs",
+      "sha256": "c999d1d3bc196372107e3d3d0689b79af570b7bb53d13503dfedf48570286d9d",
+      "positive": 50,
+      "negative": 12
+    },
+    "adversarial": {
+      "file": "eval/templates-adversarial.cjs",
+      "sha256": "30952e24e0c1db64af0e38edd3198f8b0d3a5c30a97eacbf3a82171104a759cc",
+      "positive": 47,
+      "negative": 16
+    }
+  },
+  "sets": {
+    "dev": {
+      "documents": 851,
+      "negativeDocuments": 170,
+      "characters": 74665,
+      "support": {
+        "GSTIN": 120,
+        "CARD": 120,
+        "AADHAAR": 120,
+        "EMAIL": 120,
+        "UPI": 121,
+        "PAN": 124,
+        "IFSC": 120,
+        "PHONE": 123,
+        "BANK_ACCOUNT": 135
+      },
+      "decoys": {
+        "order10": 44,
+        "order16": 32,
+        "utr12": 49,
+        "invoice": 26,
+        "timestamp": 71,
+        "epoch10": 34,
+        "epochms13": 11,
+        "price": 66,
+        "awb": 15,
+        "pnr": 14,
+        "otp": 45,
+        "pincode": 10,
+        "sku-pan": 8,
+        "coupon-ifsc": 17,
+        "handle-local": 16,
+        "version": 33
+      },
+      "unsupportedShare": 0,
+      "exact": {
+        "perEntity": {
+          "GSTIN": {
+            "tp": 120,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.968981,
+              1
+            ],
+            "recallCi": [
+              0.968981,
+              1
+            ]
+          },
+          "CARD": {
+            "tp": 120,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.968981,
+              1
+            ],
+            "recallCi": [
+              0.968981,
+              1
+            ]
+          },
+          "AADHAAR": {
+            "tp": 120,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.968981,
+              1
+            ],
+            "recallCi": [
+              0.968981,
+              1
+            ]
+          },
+          "EMAIL": {
+            "tp": 120,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.968981,
+              1
+            ],
+            "recallCi": [
+              0.968981,
+              1
+            ]
+          },
+          "UPI": {
+            "tp": 121,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.969229,
+              1
+            ],
+            "recallCi": [
+              0.969229,
+              1
+            ]
+          },
+          "PAN": {
+            "tp": 124,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.969951,
+              1
+            ],
+            "recallCi": [
+              0.969951,
+              1
+            ]
+          },
+          "IFSC": {
+            "tp": 120,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.968981,
+              1
+            ],
+            "recallCi": [
+              0.968981,
+              1
+            ]
+          },
+          "PHONE": {
+            "tp": 123,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.969714,
+              1
+            ],
+            "recallCi": [
+              0.969714,
+              1
+            ]
+          },
+          "BANK_ACCOUNT": {
+            "tp": 113,
+            "fp": 0,
+            "fn": 22,
+            "precision": 1,
+            "recall": 0.837037,
+            "f1": 0.91129,
+            "precisionCi": [
+              0.967122,
+              1
+            ],
+            "recallCi": [
+              0.765575,
+              0.889849
+            ]
+          }
+        },
+        "micro": {
+          "tp": 1081,
+          "fp": 0,
+          "fn": 22,
+          "precision": 1,
+          "recall": 0.980054,
+          "f1": 0.989927,
+          "precisionCi": [
+            0.996459,
+            1
+          ],
+          "recallCi": [
+            0.969985,
+            0.986792
+          ]
+        },
+        "macro": {
+          "precision": 1,
+          "recall": 0.981893,
+          "f1": 0.990143
+        }
+      },
+      "overlap": {
+        "perEntity": {
+          "GSTIN": {
+            "tp": 120,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.968981,
+              1
+            ],
+            "recallCi": [
+              0.968981,
+              1
+            ]
+          },
+          "CARD": {
+            "tp": 120,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.968981,
+              1
+            ],
+            "recallCi": [
+              0.968981,
+              1
+            ]
+          },
+          "AADHAAR": {
+            "tp": 120,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.968981,
+              1
+            ],
+            "recallCi": [
+              0.968981,
+              1
+            ]
+          },
+          "EMAIL": {
+            "tp": 120,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.968981,
+              1
+            ],
+            "recallCi": [
+              0.968981,
+              1
+            ]
+          },
+          "UPI": {
+            "tp": 121,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.969229,
+              1
+            ],
+            "recallCi": [
+              0.969229,
+              1
+            ]
+          },
+          "PAN": {
+            "tp": 124,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.969951,
+              1
+            ],
+            "recallCi": [
+              0.969951,
+              1
+            ]
+          },
+          "IFSC": {
+            "tp": 120,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.968981,
+              1
+            ],
+            "recallCi": [
+              0.968981,
+              1
+            ]
+          },
+          "PHONE": {
+            "tp": 123,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.969714,
+              1
+            ],
+            "recallCi": [
+              0.969714,
+              1
+            ]
+          },
+          "BANK_ACCOUNT": {
+            "tp": 113,
+            "fp": 0,
+            "fn": 22,
+            "precision": 1,
+            "recall": 0.837037,
+            "f1": 0.91129,
+            "precisionCi": [
+              0.967122,
+              1
+            ],
+            "recallCi": [
+              0.765575,
+              0.889849
+            ]
+          }
+        },
+        "micro": {
+          "tp": 1081,
+          "fp": 0,
+          "fn": 22,
+          "precision": 1,
+          "recall": 0.980054,
+          "f1": 0.989927,
+          "precisionCi": [
+            0.996459,
+            1
+          ],
+          "recallCi": [
+            0.969985,
+            0.986792
+          ]
+        },
+        "macro": {
+          "precision": 1,
+          "recall": 0.981893,
+          "f1": 0.990143
+        }
+      },
+      "leak": {
+        "counted": 15678,
+        "leaked": 294,
+        "rate": 0.018752
+      },
+      "decoyHits": {
+        "all": {
+          "total": 491,
+          "hit": 0,
+          "rate": 0
+        },
+        "byType": {
+          "order10": {
+            "total": 44,
+            "hit": 0,
+            "rate": 0
+          },
+          "order16": {
+            "total": 32,
+            "hit": 0,
+            "rate": 0
+          },
+          "utr12": {
+            "total": 49,
+            "hit": 0,
+            "rate": 0
+          },
+          "invoice": {
+            "total": 26,
+            "hit": 0,
+            "rate": 0
+          },
+          "timestamp": {
+            "total": 71,
+            "hit": 0,
+            "rate": 0
+          },
+          "epoch10": {
+            "total": 34,
+            "hit": 0,
+            "rate": 0
+          },
+          "epochms13": {
+            "total": 11,
+            "hit": 0,
+            "rate": 0
+          },
+          "price": {
+            "total": 66,
+            "hit": 0,
+            "rate": 0
+          },
+          "awb": {
+            "total": 15,
+            "hit": 0,
+            "rate": 0
+          },
+          "pnr": {
+            "total": 14,
+            "hit": 0,
+            "rate": 0
+          },
+          "otp": {
+            "total": 45,
+            "hit": 0,
+            "rate": 0
+          },
+          "pincode": {
+            "total": 10,
+            "hit": 0,
+            "rate": 0
+          },
+          "sku-pan": {
+            "total": 8,
+            "hit": 0,
+            "rate": 0
+          },
+          "coupon-ifsc": {
+            "total": 17,
+            "hit": 0,
+            "rate": 0
+          },
+          "handle-local": {
+            "total": 16,
+            "hit": 0,
+            "rate": 0
+          },
+          "version": {
+            "total": 33,
+            "hit": 0,
+            "rate": 0
+          }
+        }
+      },
+      "fpCategories": {
+        "decoy": 0,
+        "boundary": 0,
+        "type": 0,
+        "spurious": 0
+      },
+      "fnCategories": {
+        "boundary": 0,
+        "type": 0,
+        "missed": 22
+      },
+      "byFormat": {
+        "GSTIN": {
+          "standard": {
+            "support": 120,
+            "tp": 120,
+            "recall": 1
+          }
+        },
+        "CARD": {
+          "4-4-4-1": {
+            "support": 2,
+            "tp": 2,
+            "recall": 1
+          },
+          "4-4-4-4-hyphen": {
+            "support": 14,
+            "tp": 14,
+            "recall": 1
+          },
+          "4-4-4-4-space": {
+            "support": 43,
+            "tp": 43,
+            "recall": 1
+          },
+          "4-6-4": {
+            "support": 9,
+            "tp": 9,
+            "recall": 1
+          },
+          "4-6-5": {
+            "support": 7,
+            "tp": 7,
+            "recall": 1
+          },
+          "contiguous": {
+            "support": 45,
+            "tp": 45,
+            "recall": 1
+          }
+        },
+        "AADHAAR": {
+          "4-4-4-hyphen": {
+            "support": 25,
+            "tp": 25,
+            "recall": 1
+          },
+          "4-4-4-space": {
+            "support": 71,
+            "tp": 71,
+            "recall": 1
+          },
+          "contiguous": {
+            "support": 24,
+            "tp": 24,
+            "recall": 1
+          }
+        },
+        "EMAIL": {
+          "plain": {
+            "support": 120,
+            "tp": 120,
+            "recall": 1
+          }
+        },
+        "UPI": {
+          "known": {
+            "support": 101,
+            "tp": 101,
+            "recall": 1
+          },
+          "unknown": {
+            "support": 20,
+            "tp": 20,
+            "recall": 1
+          }
+        },
+        "PAN": {
+          "upper": {
+            "support": 124,
+            "tp": 124,
+            "recall": 1
+          }
+        },
+        "IFSC": {
+          "upper": {
+            "support": 120,
+            "tp": 120,
+            "recall": 1
+          }
+        },
+        "PHONE": {
+          "0091-space/10": {
+            "support": 4,
+            "tp": 4,
+            "recall": 1
+          },
+          "0091-space/4-3-3": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "0091-space/5-5": {
+            "support": 3,
+            "tp": 3,
+            "recall": 1
+          },
+          "91-space/10": {
+            "support": 4,
+            "tp": 4,
+            "recall": 1
+          },
+          "91-space/2-4-4": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "91-space/3-3-4": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "91-space/4-3-3": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "91-space/5-5": {
+            "support": 3,
+            "tp": 3,
+            "recall": 1
+          },
+          "none/10": {
+            "support": 15,
+            "tp": 15,
+            "recall": 1
+          },
+          "none/2-4-4": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "none/3-3-4": {
+            "support": 4,
+            "tp": 4,
+            "recall": 1
+          },
+          "none/4-3-3": {
+            "support": 2,
+            "tp": 2,
+            "recall": 1
+          },
+          "none/5-5": {
+            "support": 14,
+            "tp": 14,
+            "recall": 1
+          },
+          "paren-plus91/10": {
+            "support": 3,
+            "tp": 3,
+            "recall": 1
+          },
+          "paren-plus91/5-5": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "plus91-hyphen/10": {
+            "support": 4,
+            "tp": 4,
+            "recall": 1
+          },
+          "plus91-hyphen/3-3-4": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "plus91-hyphen/4-3-3": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "plus91-hyphen/5-5": {
+            "support": 7,
+            "tp": 7,
+            "recall": 1
+          },
+          "plus91-space/10": {
+            "support": 15,
+            "tp": 15,
+            "recall": 1
+          },
+          "plus91-space/2-4-4": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "plus91-space/3-3-4": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "plus91-space/4-3-3": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "plus91-space/5-5": {
+            "support": 19,
+            "tp": 19,
+            "recall": 1
+          },
+          "plus91/10": {
+            "support": 2,
+            "tp": 2,
+            "recall": 1
+          },
+          "plus91/5-5": {
+            "support": 2,
+            "tp": 2,
+            "recall": 1
+          },
+          "zero/10": {
+            "support": 6,
+            "tp": 6,
+            "recall": 1
+          },
+          "zero/3-3-4": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "zero/5-5": {
+            "support": 4,
+            "tp": 4,
+            "recall": 1
+          }
+        },
+        "BANK_ACCOUNT": {
+          "contiguous": {
+            "support": 113,
+            "tp": 95,
+            "recall": 0.840708
+          },
+          "groups-of-4-space": {
+            "support": 22,
+            "tp": 18,
+            "recall": 0.818182
+          }
+        }
+      },
+      "byNoise": {
+        "none": {
+          "support": 1103,
+          "tp": 1081,
+          "recall": 0.980054
+        }
+      },
+      "byLanguage": {
+        "en": {
+          "support": 821,
+          "tp": 821,
+          "recall": 1
+        },
+        "hinglish": {
+          "support": 171,
+          "tp": 171,
+          "recall": 1
+        },
+        "hi-mixed": {
+          "support": 111,
+          "tp": 89,
+          "recall": 0.801802
+        }
+      },
+      "confusion": {
+        "rows": [
+          "GSTIN",
+          "CARD",
+          "AADHAAR",
+          "EMAIL",
+          "UPI",
+          "PAN",
+          "IFSC",
+          "PHONE",
+          "BANK_ACCOUNT",
+          "NONE"
+        ],
+        "cols": [
+          "GSTIN",
+          "CARD",
+          "AADHAAR",
+          "EMAIL",
+          "UPI",
+          "PAN",
+          "IFSC",
+          "PHONE",
+          "BANK_ACCOUNT",
+          "MISSED"
+        ],
+        "counts": [
+          [
+            120,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            120,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            120,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            120,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            121,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            124,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            120,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            123,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            113,
+            22
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "sweep": [
+        {
+          "threshold": 0.3,
+          "precision": 0.839422,
+          "recall": 1,
+          "f1": 0.912702
+        },
+        {
+          "threshold": 0.35,
+          "precision": 0.908567,
+          "recall": 1,
+          "f1": 0.952093
+        },
+        {
+          "threshold": 0.4,
+          "precision": 0.908567,
+          "recall": 1,
+          "f1": 0.952093
+        },
+        {
+          "threshold": 0.45,
+          "precision": 0.950748,
+          "recall": 0.980054,
+          "f1": 0.965179
+        },
+        {
+          "threshold": 0.5,
+          "precision": 1,
+          "recall": 0.980054,
+          "f1": 0.989927
+        },
+        {
+          "threshold": 0.55,
+          "precision": 1,
+          "recall": 0.980054,
+          "f1": 0.989927
+        },
+        {
+          "threshold": 0.6,
+          "precision": 1,
+          "recall": 0.965549,
+          "f1": 0.982472
+        },
+        {
+          "threshold": 0.65,
+          "precision": 1,
+          "recall": 0.965549,
+          "f1": 0.982472
+        },
+        {
+          "threshold": 0.7,
+          "precision": 1,
+          "recall": 0.965549,
+          "f1": 0.982472
+        },
+        {
+          "threshold": 0.75,
+          "precision": 1,
+          "recall": 0.965549,
+          "f1": 0.982472
+        },
+        {
+          "threshold": 0.8,
+          "precision": 1,
+          "recall": 0.965549,
+          "f1": 0.982472
+        },
+        {
+          "threshold": 0.85,
+          "precision": 1,
+          "recall": 0.863101,
+          "f1": 0.926521
+        },
+        {
+          "threshold": 0.9,
+          "precision": 1,
+          "recall": 0.844062,
+          "f1": 0.915438
+        }
+      ],
+      "presets": {
+        "lenient": {
+          "GSTIN": {
+            "precision": 1,
+            "recall": 1
+          },
+          "CARD": {
+            "precision": 0.789474,
+            "recall": 1
+          },
+          "AADHAAR": {
+            "precision": 0.759494,
+            "recall": 1
+          },
+          "EMAIL": {
+            "precision": 1,
+            "recall": 1
+          },
+          "UPI": {
+            "precision": 0.883212,
+            "recall": 1
+          },
+          "PAN": {
+            "precision": 0.939394,
+            "recall": 1
+          },
+          "IFSC": {
+            "precision": 0.875912,
+            "recall": 1
+          },
+          "PHONE": {
+            "precision": 1,
+            "recall": 1
+          },
+          "BANK_ACCOUNT": {
+            "precision": 1,
+            "recall": 1
+          }
+        },
+        "balanced": {
+          "GSTIN": {
+            "precision": 1,
+            "recall": 1
+          },
+          "CARD": {
+            "precision": 1,
+            "recall": 1
+          },
+          "AADHAAR": {
+            "precision": 1,
+            "recall": 1
+          },
+          "EMAIL": {
+            "precision": 1,
+            "recall": 1
+          },
+          "UPI": {
+            "precision": 1,
+            "recall": 1
+          },
+          "PAN": {
+            "precision": 1,
+            "recall": 1
+          },
+          "IFSC": {
+            "precision": 1,
+            "recall": 1
+          },
+          "PHONE": {
+            "precision": 1,
+            "recall": 1
+          },
+          "BANK_ACCOUNT": {
+            "precision": 1,
+            "recall": 0.837037
+          }
+        },
+        "strict": {
+          "GSTIN": {
+            "precision": 1,
+            "recall": 1
+          },
+          "CARD": {
+            "precision": 1,
+            "recall": 0.866667
+          },
+          "AADHAAR": {
+            "precision": 1,
+            "recall": 1
+          },
+          "EMAIL": {
+            "precision": 1,
+            "recall": 1
+          },
+          "UPI": {
+            "precision": 1,
+            "recall": 1
+          },
+          "PAN": {
+            "precision": 1,
+            "recall": 1
+          },
+          "IFSC": {
+            "precision": 1,
+            "recall": 1
+          },
+          "PHONE": {
+            "precision": 1,
+            "recall": 1
+          },
+          "BANK_ACCOUNT": {
+            "precision": 1,
+            "recall": 0.837037
+          }
+        }
+      },
+      "failures": [
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "dev-0026",
+          "templateId": "d-payments-08",
+          "format": "contiguous",
+          "noise": null,
+          "reasons": null,
+          "excerpt": "कृपया खाता संख्या ############# में Rs ##,### जमा करें। IFSC "
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "dev-0082",
+          "templateId": "d-payments-08",
+          "format": "contiguous",
+          "noise": null,
+          "reasons": null,
+          "excerpt": "कृपया खाता संख्या ############# में ₹##,### जमा करें। IFSC AA"
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "dev-0116",
+          "templateId": "d-payments-08",
+          "format": "contiguous",
+          "noise": null,
+          "reasons": null,
+          "excerpt": "कृपया खाता संख्या ########## में Rs ##,### जमा करें। IFSC "
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "dev-0137",
+          "templateId": "d-payments-08",
+          "format": "contiguous",
+          "noise": null,
+          "reasons": null,
+          "excerpt": "कृपया खाता संख्या ################ में Rs ##,### जमा करें। IFSC "
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "dev-0152",
+          "templateId": "d-payments-08",
+          "format": "contiguous",
+          "noise": null,
+          "reasons": null,
+          "excerpt": "कृपया खाता संख्या ################## में ₹##,### जमा करें। IFSC AA"
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "dev-0187",
+          "templateId": "d-payments-08",
+          "format": "groups-of-4-space",
+          "noise": null,
+          "reasons": null,
+          "excerpt": "कृपया खाता संख्या #### #### #### में Rs ##,### जमा करें। IFSC "
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "dev-0193",
+          "templateId": "d-payments-08",
+          "format": "contiguous",
+          "noise": null,
+          "reasons": null,
+          "excerpt": "कृपया खाता संख्या ############### में Rs ##,### जमा करें। IFSC "
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "dev-0244",
+          "templateId": "d-payments-08",
+          "format": "contiguous",
+          "noise": null,
+          "reasons": null,
+          "excerpt": "कृपया खाता संख्या ############ में ₹##,### जमा करें। IFSC AA"
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "dev-0252",
+          "templateId": "d-payments-08",
+          "format": "contiguous",
+          "noise": null,
+          "reasons": null,
+          "excerpt": "कृपया खाता संख्या ######### में ₹##,### जमा करें। IFSC AA"
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "dev-0294",
+          "templateId": "d-payments-08",
+          "format": "contiguous",
+          "noise": null,
+          "reasons": null,
+          "excerpt": "कृपया खाता संख्या ########## में Rs ##,### जमा करें। IFSC "
+        }
+      ]
+    },
+    "heldout": {
+      "documents": 1067,
+      "negativeDocuments": 213,
+      "characters": 90655,
+      "support": {
+        "GSTIN": 150,
+        "CARD": 150,
+        "AADHAAR": 150,
+        "EMAIL": 150,
+        "UPI": 150,
+        "PAN": 150,
+        "IFSC": 151,
+        "PHONE": 151,
+        "BANK_ACCOUNT": 150
+      },
+      "decoys": {
+        "order10": 40,
+        "order16": 14,
+        "utr12": 44,
+        "invoice": 17,
+        "timestamp": 38,
+        "epoch10": 24,
+        "epochms13": 10,
+        "price": 65,
+        "awb": 13,
+        "pnr": 20,
+        "otp": 38,
+        "pincode": 12,
+        "sku-pan": 24,
+        "coupon-ifsc": 21,
+        "handle-local": 38,
+        "version": 38
+      },
+      "unsupportedShare": 0,
+      "exact": {
+        "perEntity": {
+          "GSTIN": {
+            "tp": 150,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.97503,
+              1
+            ],
+            "recallCi": [
+              0.97503,
+              1
+            ]
+          },
+          "CARD": {
+            "tp": 150,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.97503,
+              1
+            ],
+            "recallCi": [
+              0.97503,
+              1
+            ]
+          },
+          "AADHAAR": {
+            "tp": 150,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.97503,
+              1
+            ],
+            "recallCi": [
+              0.97503,
+              1
+            ]
+          },
+          "EMAIL": {
+            "tp": 150,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.97503,
+              1
+            ],
+            "recallCi": [
+              0.97503,
+              1
+            ]
+          },
+          "UPI": {
+            "tp": 143,
+            "fp": 0,
+            "fn": 7,
+            "precision": 1,
+            "recall": 0.953333,
+            "f1": 0.976109,
+            "precisionCi": [
+              0.973839,
+              1
+            ],
+            "recallCi": [
+              0.906814,
+              0.977213
+            ]
+          },
+          "PAN": {
+            "tp": 150,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.97503,
+              1
+            ],
+            "recallCi": [
+              0.97503,
+              1
+            ]
+          },
+          "IFSC": {
+            "tp": 151,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.975191,
+              1
+            ],
+            "recallCi": [
+              0.975191,
+              1
+            ]
+          },
+          "PHONE": {
+            "tp": 141,
+            "fp": 0,
+            "fn": 10,
+            "precision": 1,
+            "recall": 0.933775,
+            "f1": 0.965753,
+            "precisionCi": [
+              0.973478,
+              1
+            ],
+            "recallCi": [
+              0.882393,
+              0.963633
+            ]
+          },
+          "BANK_ACCOUNT": {
+            "tp": 132,
+            "fp": 10,
+            "fn": 18,
+            "precision": 0.929577,
+            "recall": 0.88,
+            "f1": 0.90411,
+            "precisionCi": [
+              0.875224,
+              0.961301
+            ],
+            "recallCi": [
+              0.818292,
+              0.922731
+            ]
+          }
+        },
+        "micro": {
+          "tp": 1317,
+          "fp": 10,
+          "fn": 35,
+          "precision": 0.992464,
+          "recall": 0.974112,
+          "f1": 0.983203,
+          "precisionCi": [
+            0.986184,
+            0.995902
+          ],
+          "recallCi": [
+            0.96421,
+            0.981328
+          ]
+        },
+        "macro": {
+          "precision": 0.992175,
+          "recall": 0.974123,
+          "f1": 0.982886
+        }
+      },
+      "overlap": {
+        "perEntity": {
+          "GSTIN": {
+            "tp": 150,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.97503,
+              1
+            ],
+            "recallCi": [
+              0.97503,
+              1
+            ]
+          },
+          "CARD": {
+            "tp": 150,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.97503,
+              1
+            ],
+            "recallCi": [
+              0.97503,
+              1
+            ]
+          },
+          "AADHAAR": {
+            "tp": 150,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.97503,
+              1
+            ],
+            "recallCi": [
+              0.97503,
+              1
+            ]
+          },
+          "EMAIL": {
+            "tp": 150,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.97503,
+              1
+            ],
+            "recallCi": [
+              0.97503,
+              1
+            ]
+          },
+          "UPI": {
+            "tp": 143,
+            "fp": 0,
+            "fn": 7,
+            "precision": 1,
+            "recall": 0.953333,
+            "f1": 0.976109,
+            "precisionCi": [
+              0.973839,
+              1
+            ],
+            "recallCi": [
+              0.906814,
+              0.977213
+            ]
+          },
+          "PAN": {
+            "tp": 150,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.97503,
+              1
+            ],
+            "recallCi": [
+              0.97503,
+              1
+            ]
+          },
+          "IFSC": {
+            "tp": 151,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.975191,
+              1
+            ],
+            "recallCi": [
+              0.975191,
+              1
+            ]
+          },
+          "PHONE": {
+            "tp": 141,
+            "fp": 0,
+            "fn": 10,
+            "precision": 1,
+            "recall": 0.933775,
+            "f1": 0.965753,
+            "precisionCi": [
+              0.973478,
+              1
+            ],
+            "recallCi": [
+              0.882393,
+              0.963633
+            ]
+          },
+          "BANK_ACCOUNT": {
+            "tp": 132,
+            "fp": 10,
+            "fn": 18,
+            "precision": 0.929577,
+            "recall": 0.88,
+            "f1": 0.90411,
+            "precisionCi": [
+              0.875224,
+              0.961301
+            ],
+            "recallCi": [
+              0.818292,
+              0.922731
+            ]
+          }
+        },
+        "micro": {
+          "tp": 1317,
+          "fp": 10,
+          "fn": 35,
+          "precision": 0.992464,
+          "recall": 0.974112,
+          "f1": 0.983203,
+          "precisionCi": [
+            0.986184,
+            0.995902
+          ],
+          "recallCi": [
+            0.96421,
+            0.981328
+          ]
+        },
+        "macro": {
+          "precision": 0.992175,
+          "recall": 0.974123,
+          "f1": 0.982886
+        }
+      },
+      "leak": {
+        "counted": 19242,
+        "leaked": 354,
+        "rate": 0.018397
+      },
+      "decoyHits": {
+        "all": {
+          "total": 456,
+          "hit": 0,
+          "rate": 0
+        },
+        "byType": {
+          "order10": {
+            "total": 40,
+            "hit": 0,
+            "rate": 0
+          },
+          "order16": {
+            "total": 14,
+            "hit": 0,
+            "rate": 0
+          },
+          "utr12": {
+            "total": 44,
+            "hit": 0,
+            "rate": 0
+          },
+          "invoice": {
+            "total": 17,
+            "hit": 0,
+            "rate": 0
+          },
+          "timestamp": {
+            "total": 38,
+            "hit": 0,
+            "rate": 0
+          },
+          "epoch10": {
+            "total": 24,
+            "hit": 0,
+            "rate": 0
+          },
+          "epochms13": {
+            "total": 10,
+            "hit": 0,
+            "rate": 0
+          },
+          "price": {
+            "total": 65,
+            "hit": 0,
+            "rate": 0
+          },
+          "awb": {
+            "total": 13,
+            "hit": 0,
+            "rate": 0
+          },
+          "pnr": {
+            "total": 20,
+            "hit": 0,
+            "rate": 0
+          },
+          "otp": {
+            "total": 38,
+            "hit": 0,
+            "rate": 0
+          },
+          "pincode": {
+            "total": 12,
+            "hit": 0,
+            "rate": 0
+          },
+          "sku-pan": {
+            "total": 24,
+            "hit": 0,
+            "rate": 0
+          },
+          "coupon-ifsc": {
+            "total": 21,
+            "hit": 0,
+            "rate": 0
+          },
+          "handle-local": {
+            "total": 38,
+            "hit": 0,
+            "rate": 0
+          },
+          "version": {
+            "total": 38,
+            "hit": 0,
+            "rate": 0
+          }
+        }
+      },
+      "fpCategories": {
+        "decoy": 0,
+        "boundary": 0,
+        "type": 10,
+        "spurious": 0
+      },
+      "fnCategories": {
+        "boundary": 0,
+        "type": 10,
+        "missed": 25
+      },
+      "byFormat": {
+        "GSTIN": {
+          "standard": {
+            "support": 150,
+            "tp": 150,
+            "recall": 1
+          }
+        },
+        "CARD": {
+          "4-4-4-1": {
+            "support": 5,
+            "tp": 5,
+            "recall": 1
+          },
+          "4-4-4-4-hyphen": {
+            "support": 34,
+            "tp": 34,
+            "recall": 1
+          },
+          "4-4-4-4-space": {
+            "support": 47,
+            "tp": 47,
+            "recall": 1
+          },
+          "4-6-4": {
+            "support": 6,
+            "tp": 6,
+            "recall": 1
+          },
+          "4-6-5": {
+            "support": 13,
+            "tp": 13,
+            "recall": 1
+          },
+          "contiguous": {
+            "support": 45,
+            "tp": 45,
+            "recall": 1
+          }
+        },
+        "AADHAAR": {
+          "4-4-4-hyphen": {
+            "support": 52,
+            "tp": 52,
+            "recall": 1
+          },
+          "4-4-4-space": {
+            "support": 58,
+            "tp": 58,
+            "recall": 1
+          },
+          "contiguous": {
+            "support": 40,
+            "tp": 40,
+            "recall": 1
+          }
+        },
+        "EMAIL": {
+          "plain": {
+            "support": 150,
+            "tp": 150,
+            "recall": 1
+          }
+        },
+        "UPI": {
+          "known": {
+            "support": 122,
+            "tp": 122,
+            "recall": 1
+          },
+          "unknown": {
+            "support": 28,
+            "tp": 21,
+            "recall": 0.75
+          }
+        },
+        "PAN": {
+          "upper": {
+            "support": 150,
+            "tp": 150,
+            "recall": 1
+          }
+        },
+        "IFSC": {
+          "upper": {
+            "support": 151,
+            "tp": 151,
+            "recall": 1
+          }
+        },
+        "PHONE": {
+          "0091-space/10": {
+            "support": 4,
+            "tp": 4,
+            "recall": 1
+          },
+          "0091-space/5-5": {
+            "support": 3,
+            "tp": 3,
+            "recall": 1
+          },
+          "91-space/10": {
+            "support": 3,
+            "tp": 3,
+            "recall": 1
+          },
+          "91-space/2-4-4": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "91-space/3-3-4": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "none/10": {
+            "support": 24,
+            "tp": 22,
+            "recall": 0.916667
+          },
+          "none/2-4-4": {
+            "support": 4,
+            "tp": 4,
+            "recall": 1
+          },
+          "none/3-3-4": {
+            "support": 5,
+            "tp": 4,
+            "recall": 0.8
+          },
+          "none/4-3-3": {
+            "support": 2,
+            "tp": 1,
+            "recall": 0.5
+          },
+          "none/5-5": {
+            "support": 21,
+            "tp": 18,
+            "recall": 0.857143
+          },
+          "paren-plus91/10": {
+            "support": 3,
+            "tp": 3,
+            "recall": 1
+          },
+          "paren-plus91/3-3-4": {
+            "support": 3,
+            "tp": 3,
+            "recall": 1
+          },
+          "paren-plus91/5-5": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "plus91-hyphen/10": {
+            "support": 4,
+            "tp": 4,
+            "recall": 1
+          },
+          "plus91-hyphen/2-4-4": {
+            "support": 3,
+            "tp": 3,
+            "recall": 1
+          },
+          "plus91-hyphen/3-3-4": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "plus91-hyphen/4-3-3": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "plus91-hyphen/5-5": {
+            "support": 5,
+            "tp": 5,
+            "recall": 1
+          },
+          "plus91-space/10": {
+            "support": 19,
+            "tp": 19,
+            "recall": 1
+          },
+          "plus91-space/2-4-4": {
+            "support": 2,
+            "tp": 2,
+            "recall": 1
+          },
+          "plus91-space/3-3-4": {
+            "support": 5,
+            "tp": 5,
+            "recall": 1
+          },
+          "plus91-space/5-5": {
+            "support": 9,
+            "tp": 9,
+            "recall": 1
+          },
+          "plus91/10": {
+            "support": 5,
+            "tp": 5,
+            "recall": 1
+          },
+          "plus91/2-4-4": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "plus91/3-3-4": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "plus91/5-5": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "zero/10": {
+            "support": 7,
+            "tp": 5,
+            "recall": 0.714286
+          },
+          "zero/2-4-4": {
+            "support": 3,
+            "tp": 3,
+            "recall": 1
+          },
+          "zero/3-3-4": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "zero/5-5": {
+            "support": 8,
+            "tp": 7,
+            "recall": 0.875
+          }
+        },
+        "BANK_ACCOUNT": {
+          "contiguous": {
+            "support": 127,
+            "tp": 112,
+            "recall": 0.88189
+          },
+          "groups-of-4-space": {
+            "support": 23,
+            "tp": 20,
+            "recall": 0.869565
+          }
+        }
+      },
+      "byNoise": {
+        "none": {
+          "support": 1352,
+          "tp": 1317,
+          "recall": 0.974112
+        }
+      },
+      "byLanguage": {
+        "en": {
+          "support": 1064,
+          "tp": 1047,
+          "recall": 0.984023
+        },
+        "hinglish": {
+          "support": 205,
+          "tp": 187,
+          "recall": 0.912195
+        },
+        "hi-mixed": {
+          "support": 83,
+          "tp": 83,
+          "recall": 1
+        }
+      },
+      "confusion": {
+        "rows": [
+          "GSTIN",
+          "CARD",
+          "AADHAAR",
+          "EMAIL",
+          "UPI",
+          "PAN",
+          "IFSC",
+          "PHONE",
+          "BANK_ACCOUNT",
+          "NONE"
+        ],
+        "cols": [
+          "GSTIN",
+          "CARD",
+          "AADHAAR",
+          "EMAIL",
+          "UPI",
+          "PAN",
+          "IFSC",
+          "PHONE",
+          "BANK_ACCOUNT",
+          "MISSED"
+        ],
+        "counts": [
+          [
+            150,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            150,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            150,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            150,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            143,
+            0,
+            0,
+            0,
+            0,
+            7
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            150,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            151,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            141,
+            10,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            132,
+            18
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "sweep": [
+        {
+          "threshold": 0.3,
+          "precision": 0.85369,
+          "recall": 0.992604,
+          "f1": 0.917921
+        },
+        {
+          "threshold": 0.35,
+          "precision": 0.906229,
+          "recall": 0.97929,
+          "f1": 0.941344
+        },
+        {
+          "threshold": 0.4,
+          "precision": 0.906229,
+          "recall": 0.97929,
+          "f1": 0.941344
+        },
+        {
+          "threshold": 0.45,
+          "precision": 0.948424,
+          "recall": 0.97929,
+          "f1": 0.96361
+        },
+        {
+          "threshold": 0.5,
+          "precision": 0.992464,
+          "recall": 0.974112,
+          "f1": 0.983203
+        },
+        {
+          "threshold": 0.55,
+          "precision": 0.992464,
+          "recall": 0.974112,
+          "f1": 0.983203
+        },
+        {
+          "threshold": 0.6,
+          "precision": 0.992355,
+          "recall": 0.960059,
+          "f1": 0.97594
+        },
+        {
+          "threshold": 0.65,
+          "precision": 0.992355,
+          "recall": 0.960059,
+          "f1": 0.97594
+        },
+        {
+          "threshold": 0.7,
+          "precision": 0.992355,
+          "recall": 0.960059,
+          "f1": 0.97594
+        },
+        {
+          "threshold": 0.75,
+          "precision": 0.990596,
+          "recall": 0.934911,
+          "f1": 0.961948
+        },
+        {
+          "threshold": 0.8,
+          "precision": 0.990596,
+          "recall": 0.934911,
+          "f1": 0.961948
+        },
+        {
+          "threshold": 0.85,
+          "precision": 1,
+          "recall": 0.798077,
+          "f1": 0.887701
+        },
+        {
+          "threshold": 0.9,
+          "precision": 1,
+          "recall": 0.724112,
+          "f1": 0.839983
+        }
+      ],
+      "presets": {
+        "lenient": {
+          "GSTIN": {
+            "precision": 1,
+            "recall": 1
+          },
+          "CARD": {
+            "precision": 1,
+            "recall": 1
+          },
+          "AADHAAR": {
+            "precision": 0.777202,
+            "recall": 1
+          },
+          "EMAIL": {
+            "precision": 1,
+            "recall": 1
+          },
+          "UPI": {
+            "precision": 0.797872,
+            "recall": 1
+          },
+          "PAN": {
+            "precision": 0.862069,
+            "recall": 1
+          },
+          "IFSC": {
+            "precision": 0.877907,
+            "recall": 1
+          },
+          "PHONE": {
+            "precision": 1,
+            "recall": 0.933775
+          },
+          "BANK_ACCOUNT": {
+            "precision": 0.923077,
+            "recall": 0.88
+          }
+        },
+        "balanced": {
+          "GSTIN": {
+            "precision": 1,
+            "recall": 1
+          },
+          "CARD": {
+            "precision": 1,
+            "recall": 1
+          },
+          "AADHAAR": {
+            "precision": 1,
+            "recall": 1
+          },
+          "EMAIL": {
+            "precision": 1,
+            "recall": 1
+          },
+          "UPI": {
+            "precision": 1,
+            "recall": 0.953333
+          },
+          "PAN": {
+            "precision": 1,
+            "recall": 1
+          },
+          "IFSC": {
+            "precision": 1,
+            "recall": 1
+          },
+          "PHONE": {
+            "precision": 1,
+            "recall": 0.933775
+          },
+          "BANK_ACCOUNT": {
+            "precision": 0.929577,
+            "recall": 0.88
+          }
+        },
+        "strict": {
+          "GSTIN": {
+            "precision": 1,
+            "recall": 1
+          },
+          "CARD": {
+            "precision": 1,
+            "recall": 0.873333
+          },
+          "AADHAAR": {
+            "precision": 1,
+            "recall": 1
+          },
+          "EMAIL": {
+            "precision": 1,
+            "recall": 1
+          },
+          "UPI": {
+            "precision": 1,
+            "recall": 0.953333
+          },
+          "PAN": {
+            "precision": 1,
+            "recall": 1
+          },
+          "IFSC": {
+            "precision": 1,
+            "recall": 1
+          },
+          "PHONE": {
+            "precision": 1,
+            "recall": 0.933775
+          },
+          "BANK_ACCOUNT": {
+            "precision": 0.929577,
+            "recall": 0.88
+          }
+        }
+      },
+      "failures": [
+        {
+          "kind": "FN",
+          "entity": "UPI",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "heldout-0006",
+          "templateId": "h-payments-04",
+          "format": "unknown",
+          "noise": null,
+          "reasons": null,
+          "excerpt": "Collect request sent from xxxxx###@fakepay for Rs ##,###; approve it in "
+        },
+        {
+          "kind": "FN",
+          "entity": "UPI",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "heldout-0221",
+          "templateId": "h-payments-04",
+          "format": "unknown",
+          "noise": null,
+          "reasons": null,
+          "excerpt": "Collect request sent from xxxxxx.x@samplebank for Rs ##,###; approve it in "
+        },
+        {
+          "kind": "FN",
+          "entity": "UPI",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "heldout-0541",
+          "templateId": "h-payments-04",
+          "format": "unknown",
+          "noise": null,
+          "reasons": null,
+          "excerpt": "Collect request sent from ##########@okdemo for Rs ##,###; approve it in "
+        },
+        {
+          "kind": "FN",
+          "entity": "UPI",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "heldout-0813",
+          "templateId": "h-chat-02",
+          "format": "unknown",
+          "noise": null,
+          "reasons": null,
+          "excerpt": "yo send the money here: xxxxx.xxxxxxxxx@fakepay"
+        },
+        {
+          "kind": "FN",
+          "entity": "UPI",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "heldout-0957",
+          "templateId": "h-support-03",
+          "format": "unknown",
+          "noise": null,
+          "reasons": null,
+          "excerpt": "ried paying Rs ##,### through xxxxxx##@okdemo three times and every attempt"
+        },
+        {
+          "kind": "FN",
+          "entity": "UPI",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "heldout-0964",
+          "templateId": "h-chat-02",
+          "format": "unknown",
+          "noise": null,
+          "reasons": null,
+          "excerpt": "yo send the money here: xxxxx.xxxxxxx@samplebank"
+        },
+        {
+          "kind": "FN",
+          "entity": "UPI",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "heldout-1044",
+          "templateId": "h-chat-02",
+          "format": "unknown",
+          "noise": null,
+          "reasons": null,
+          "excerpt": "yo send the money here: xxxxx.x@samplebank"
+        },
+        {
+          "kind": "FN",
+          "entity": "PHONE",
+          "otherEntity": "BANK_ACCOUNT",
+          "category": "type",
+          "docId": "heldout-0152",
+          "templateId": "h-misc-01",
+          "format": "zero/10",
+          "noise": null,
+          "reasons": [
+            "grouping:11",
+            "context:account"
+          ],
+          "excerpt": "nt #############. Reach me at ########### to collect."
+        },
+        {
+          "kind": "FN",
+          "entity": "PHONE",
+          "otherEntity": "BANK_ACCOUNT",
+          "category": "type",
+          "docId": "heldout-0439",
+          "templateId": "h-misc-01",
+          "format": "none/4-3-3",
+          "noise": null,
+          "reasons": [
+            "grouping:4-3-3",
+            "context:account"
+          ],
+          "excerpt": "count ##########. Reach me at #### ### ### to collect."
+        },
+        {
+          "kind": "FN",
+          "entity": "PHONE",
+          "otherEntity": "BANK_ACCOUNT",
+          "category": "type",
+          "docId": "heldout-0462",
+          "templateId": "h-misc-01",
+          "format": "zero/5-5",
+          "noise": null,
+          "reasons": [
+            "grouping:6-5",
+            "context:account"
+          ],
+          "excerpt": "t ##############. Reach me at ###### ##### to collect."
+        },
+        {
+          "kind": "FN",
+          "entity": "PHONE",
+          "otherEntity": "BANK_ACCOUNT",
+          "category": "type",
+          "docId": "heldout-0494",
+          "templateId": "h-misc-01",
+          "format": "none/5-5",
+          "noise": null,
+          "reasons": [
+            "grouping:5-5",
+            "context:account"
+          ],
+          "excerpt": "nt #############. Reach me at ##### ##### to collect."
+        },
+        {
+          "kind": "FN",
+          "entity": "PHONE",
+          "otherEntity": "BANK_ACCOUNT",
+          "category": "type",
+          "docId": "heldout-0508",
+          "templateId": "h-misc-01",
+          "format": "none/10",
+          "noise": null,
+          "reasons": [
+            "grouping:10",
+            "context:account"
+          ],
+          "excerpt": "t ##############. Reach me at ########## to collect."
+        },
+        {
+          "kind": "FN",
+          "entity": "PHONE",
+          "otherEntity": "BANK_ACCOUNT",
+          "category": "type",
+          "docId": "heldout-0573",
+          "templateId": "h-misc-01",
+          "format": "none/10",
+          "noise": null,
+          "reasons": [
+            "grouping:10",
+            "context:account"
+          ],
+          "excerpt": "ccount #########. Reach me at ########## to collect."
+        },
+        {
+          "kind": "FN",
+          "entity": "PHONE",
+          "otherEntity": "BANK_ACCOUNT",
+          "category": "type",
+          "docId": "heldout-0669",
+          "templateId": "h-misc-01",
+          "format": "zero/10",
+          "noise": null,
+          "reasons": [
+            "grouping:11",
+            "context:account"
+          ],
+          "excerpt": "################. Reach me at ########### to collect."
+        },
+        {
+          "kind": "FN",
+          "entity": "PHONE",
+          "otherEntity": "BANK_ACCOUNT",
+          "category": "type",
+          "docId": "heldout-0849",
+          "templateId": "h-misc-01",
+          "format": "none/3-3-4",
+          "noise": null,
+          "reasons": [
+            "grouping:3-3-4",
+            "context:account"
+          ],
+          "excerpt": "################. Reach me at ### ### #### to collect."
+        },
+        {
+          "kind": "FN",
+          "entity": "PHONE",
+          "otherEntity": "BANK_ACCOUNT",
+          "category": "type",
+          "docId": "heldout-0884",
+          "templateId": "h-misc-01",
+          "format": "none/5-5",
+          "noise": null,
+          "reasons": [
+            "grouping:5-5",
+            "context:account"
+          ],
+          "excerpt": "nt #############. Reach me at #####-##### to collect."
+        },
+        {
+          "kind": "FN",
+          "entity": "PHONE",
+          "otherEntity": "BANK_ACCOUNT",
+          "category": "type",
+          "docId": "heldout-1067",
+          "templateId": "h-misc-01",
+          "format": "none/5-5",
+          "noise": null,
+          "reasons": [
+            "grouping:5-5",
+            "context:account"
+          ],
+          "excerpt": " #### #### #####. Reach me at ##### ##### to collect."
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "heldout-0016",
+          "templateId": "h-payments-07",
+          "format": "contiguous",
+          "noise": null,
+          "reasons": null,
+          "excerpt": "mere khate mein daalo: #############, ifsc AAAA#######, branch Jai"
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "heldout-0109",
+          "templateId": "h-payments-07",
+          "format": "contiguous",
+          "noise": null,
+          "reasons": null,
+          "excerpt": "mere khate mein daalo: #############, ifsc AAAA####A##, branch Jai"
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "heldout-0118",
+          "templateId": "h-payments-07",
+          "format": "contiguous",
+          "noise": null,
+          "reasons": null,
+          "excerpt": "mere khate mein daalo: ##################, ifsc AAAA#A#A###, branch Pun"
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "heldout-0196",
+          "templateId": "h-payments-07",
+          "format": "contiguous",
+          "noise": null,
+          "reasons": null,
+          "excerpt": "mere khate mein daalo: ###########, ifsc AAAA#######, branch Mys"
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "heldout-0237",
+          "templateId": "h-payments-07",
+          "format": "contiguous",
+          "noise": null,
+          "reasons": null,
+          "excerpt": "mere khate mein daalo: ###############, ifsc AAAA#######, branch Jai"
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "heldout-0396",
+          "templateId": "h-payments-07",
+          "format": "contiguous",
+          "noise": null,
+          "reasons": null,
+          "excerpt": "mere khate mein daalo: ################, ifsc AAAA#######, branch Pun"
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "heldout-0426",
+          "templateId": "h-payments-07",
+          "format": "groups-of-4-space",
+          "noise": null,
+          "reasons": null,
+          "excerpt": "mere khate mein daalo: #### #### #####, ifsc AAAA#A#AA##, branch Ind"
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "heldout-0433",
+          "templateId": "h-payments-07",
+          "format": "contiguous",
+          "noise": null,
+          "reasons": null,
+          "excerpt": "mere khate mein daalo: ##############, ifsc AAAA###A##A, branch Luc"
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "heldout-0488",
+          "templateId": "h-payments-07",
+          "format": "contiguous",
+          "noise": null,
+          "reasons": null,
+          "excerpt": "mere khate mein daalo: ###############, ifsc AAAA#######, branch Luc"
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "heldout-0521",
+          "templateId": "h-payments-07",
+          "format": "contiguous",
+          "noise": null,
+          "reasons": null,
+          "excerpt": "mere khate mein daalo: #########, ifsc AAAA#######, branch Mys"
+        },
+        {
+          "kind": "FP",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": "PHONE",
+          "category": "type",
+          "docId": "heldout-0152",
+          "templateId": "h-misc-01",
+          "format": "zero/10",
+          "noise": null,
+          "reasons": [
+            "grouping:11",
+            "context:account"
+          ],
+          "excerpt": "nt #############. Reach me at ########### to collect."
+        },
+        {
+          "kind": "FP",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": "PHONE",
+          "category": "type",
+          "docId": "heldout-0439",
+          "templateId": "h-misc-01",
+          "format": "none/4-3-3",
+          "noise": null,
+          "reasons": [
+            "grouping:4-3-3",
+            "context:account"
+          ],
+          "excerpt": "count ##########. Reach me at #### ### ### to collect."
+        },
+        {
+          "kind": "FP",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": "PHONE",
+          "category": "type",
+          "docId": "heldout-0462",
+          "templateId": "h-misc-01",
+          "format": "zero/5-5",
+          "noise": null,
+          "reasons": [
+            "grouping:6-5",
+            "context:account"
+          ],
+          "excerpt": "t ##############. Reach me at ###### ##### to collect."
+        },
+        {
+          "kind": "FP",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": "PHONE",
+          "category": "type",
+          "docId": "heldout-0494",
+          "templateId": "h-misc-01",
+          "format": "none/5-5",
+          "noise": null,
+          "reasons": [
+            "grouping:5-5",
+            "context:account"
+          ],
+          "excerpt": "nt #############. Reach me at ##### ##### to collect."
+        },
+        {
+          "kind": "FP",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": "PHONE",
+          "category": "type",
+          "docId": "heldout-0508",
+          "templateId": "h-misc-01",
+          "format": "none/10",
+          "noise": null,
+          "reasons": [
+            "grouping:10",
+            "context:account"
+          ],
+          "excerpt": "t ##############. Reach me at ########## to collect."
+        },
+        {
+          "kind": "FP",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": "PHONE",
+          "category": "type",
+          "docId": "heldout-0573",
+          "templateId": "h-misc-01",
+          "format": "none/10",
+          "noise": null,
+          "reasons": [
+            "grouping:10",
+            "context:account"
+          ],
+          "excerpt": "ccount #########. Reach me at ########## to collect."
+        },
+        {
+          "kind": "FP",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": "PHONE",
+          "category": "type",
+          "docId": "heldout-0669",
+          "templateId": "h-misc-01",
+          "format": "zero/10",
+          "noise": null,
+          "reasons": [
+            "grouping:11",
+            "context:account"
+          ],
+          "excerpt": "################. Reach me at ########### to collect."
+        },
+        {
+          "kind": "FP",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": "PHONE",
+          "category": "type",
+          "docId": "heldout-0849",
+          "templateId": "h-misc-01",
+          "format": "none/3-3-4",
+          "noise": null,
+          "reasons": [
+            "grouping:3-3-4",
+            "context:account"
+          ],
+          "excerpt": "################. Reach me at ### ### #### to collect."
+        },
+        {
+          "kind": "FP",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": "PHONE",
+          "category": "type",
+          "docId": "heldout-0884",
+          "templateId": "h-misc-01",
+          "format": "none/5-5",
+          "noise": null,
+          "reasons": [
+            "grouping:5-5",
+            "context:account"
+          ],
+          "excerpt": "nt #############. Reach me at #####-##### to collect."
+        },
+        {
+          "kind": "FP",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": "PHONE",
+          "category": "type",
+          "docId": "heldout-1067",
+          "templateId": "h-misc-01",
+          "format": "none/5-5",
+          "noise": null,
+          "reasons": [
+            "grouping:5-5",
+            "context:account"
+          ],
+          "excerpt": " #### #### #####. Reach me at ##### ##### to collect."
+        }
+      ]
+    },
+    "adversarial": {
+      "documents": 564,
+      "negativeDocuments": 188,
+      "characters": 34534,
+      "support": {
+        "GSTIN": 61,
+        "CARD": 60,
+        "AADHAAR": 60,
+        "EMAIL": 60,
+        "UPI": 60,
+        "PAN": 62,
+        "IFSC": 61,
+        "PHONE": 60,
+        "BANK_ACCOUNT": 60
+      },
+      "decoys": {
+        "order10": 44,
+        "order16": 49,
+        "utr12": 47,
+        "invoice": 48,
+        "timestamp": 41,
+        "epoch10": 23,
+        "epochms13": 27,
+        "price": 62,
+        "awb": 26,
+        "pnr": 23,
+        "otp": 42,
+        "pincode": 30,
+        "sku-pan": 27,
+        "coupon-ifsc": 21,
+        "handle-local": 28,
+        "version": 52
+      },
+      "unsupportedShare": 0.053309,
+      "exact": {
+        "perEntity": {
+          "GSTIN": {
+            "tp": 54,
+            "fp": 0,
+            "fn": 7,
+            "precision": 1,
+            "recall": 0.885246,
+            "f1": 0.93913,
+            "precisionCi": [
+              0.933586,
+              1
+            ],
+            "recallCi": [
+              0.781557,
+              0.943288
+            ]
+          },
+          "CARD": {
+            "tp": 48,
+            "fp": 0,
+            "fn": 12,
+            "precision": 1,
+            "recall": 0.8,
+            "f1": 0.888889,
+            "precisionCi": [
+              0.9259,
+              1
+            ],
+            "recallCi": [
+              0.682182,
+              0.881715
+            ]
+          },
+          "AADHAAR": {
+            "tp": 49,
+            "fp": 0,
+            "fn": 11,
+            "precision": 1,
+            "recall": 0.816667,
+            "f1": 0.899083,
+            "precisionCi": [
+              0.927302,
+              1
+            ],
+            "recallCi": [
+              0.700802,
+              0.894422
+            ]
+          },
+          "EMAIL": {
+            "tp": 55,
+            "fp": 0,
+            "fn": 5,
+            "precision": 1,
+            "recall": 0.916667,
+            "f1": 0.956522,
+            "precisionCi": [
+              0.934715,
+              1
+            ],
+            "recallCi": [
+              0.819311,
+              0.96388
+            ]
+          },
+          "UPI": {
+            "tp": 54,
+            "fp": 12,
+            "fn": 6,
+            "precision": 0.818182,
+            "recall": 0.9,
+            "f1": 0.857143,
+            "precisionCi": [
+              0.708548,
+              0.892814
+            ],
+            "recallCi": [
+              0.798505,
+              0.953357
+            ]
+          },
+          "PAN": {
+            "tp": 62,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.941656,
+              1
+            ],
+            "recallCi": [
+              0.941656,
+              1
+            ]
+          },
+          "IFSC": {
+            "tp": 61,
+            "fp": 8,
+            "fn": 0,
+            "precision": 0.884058,
+            "recall": 1,
+            "f1": 0.938462,
+            "precisionCi": [
+              0.787543,
+              0.940065
+            ],
+            "recallCi": [
+              0.940756,
+              1
+            ]
+          },
+          "PHONE": {
+            "tp": 60,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9375,
+            "recall": 1,
+            "f1": 0.967742,
+            "precisionCi": [
+              0.850025,
+              0.975429
+            ],
+            "recallCi": [
+              0.939828,
+              1
+            ]
+          },
+          "BANK_ACCOUNT": {
+            "tp": 50,
+            "fp": 0,
+            "fn": 10,
+            "precision": 1,
+            "recall": 0.833333,
+            "f1": 0.909091,
+            "precisionCi": [
+              0.928652,
+              1
+            ],
+            "recallCi": [
+              0.719684,
+              0.906868
+            ]
+          }
+        },
+        "micro": {
+          "tp": 493,
+          "fp": 24,
+          "fn": 51,
+          "precision": 0.953578,
+          "recall": 0.90625,
+          "f1": 0.929312,
+          "precisionCi": [
+            0.931857,
+            0.968609
+          ],
+          "recallCi": [
+            0.878828,
+            0.927975
+          ]
+        },
+        "macro": {
+          "precision": 0.959971,
+          "recall": 0.905768,
+          "f1": 0.928451
+        }
+      },
+      "overlap": {
+        "perEntity": {
+          "GSTIN": {
+            "tp": 54,
+            "fp": 0,
+            "fn": 7,
+            "precision": 1,
+            "recall": 0.885246,
+            "f1": 0.93913,
+            "precisionCi": [
+              0.933586,
+              1
+            ],
+            "recallCi": [
+              0.781557,
+              0.943288
+            ]
+          },
+          "CARD": {
+            "tp": 48,
+            "fp": 0,
+            "fn": 12,
+            "precision": 1,
+            "recall": 0.8,
+            "f1": 0.888889,
+            "precisionCi": [
+              0.9259,
+              1
+            ],
+            "recallCi": [
+              0.682182,
+              0.881715
+            ]
+          },
+          "AADHAAR": {
+            "tp": 49,
+            "fp": 0,
+            "fn": 11,
+            "precision": 1,
+            "recall": 0.816667,
+            "f1": 0.899083,
+            "precisionCi": [
+              0.927302,
+              1
+            ],
+            "recallCi": [
+              0.700802,
+              0.894422
+            ]
+          },
+          "EMAIL": {
+            "tp": 55,
+            "fp": 0,
+            "fn": 5,
+            "precision": 1,
+            "recall": 0.916667,
+            "f1": 0.956522,
+            "precisionCi": [
+              0.934715,
+              1
+            ],
+            "recallCi": [
+              0.819311,
+              0.96388
+            ]
+          },
+          "UPI": {
+            "tp": 54,
+            "fp": 12,
+            "fn": 6,
+            "precision": 0.818182,
+            "recall": 0.9,
+            "f1": 0.857143,
+            "precisionCi": [
+              0.708548,
+              0.892814
+            ],
+            "recallCi": [
+              0.798505,
+              0.953357
+            ]
+          },
+          "PAN": {
+            "tp": 62,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "precisionCi": [
+              0.941656,
+              1
+            ],
+            "recallCi": [
+              0.941656,
+              1
+            ]
+          },
+          "IFSC": {
+            "tp": 61,
+            "fp": 8,
+            "fn": 0,
+            "precision": 0.884058,
+            "recall": 1,
+            "f1": 0.938462,
+            "precisionCi": [
+              0.787543,
+              0.940065
+            ],
+            "recallCi": [
+              0.940756,
+              1
+            ]
+          },
+          "PHONE": {
+            "tp": 60,
+            "fp": 4,
+            "fn": 0,
+            "precision": 0.9375,
+            "recall": 1,
+            "f1": 0.967742,
+            "precisionCi": [
+              0.850025,
+              0.975429
+            ],
+            "recallCi": [
+              0.939828,
+              1
+            ]
+          },
+          "BANK_ACCOUNT": {
+            "tp": 50,
+            "fp": 0,
+            "fn": 10,
+            "precision": 1,
+            "recall": 0.833333,
+            "f1": 0.909091,
+            "precisionCi": [
+              0.928652,
+              1
+            ],
+            "recallCi": [
+              0.719684,
+              0.906868
+            ]
+          }
+        },
+        "micro": {
+          "tp": 493,
+          "fp": 24,
+          "fn": 51,
+          "precision": 0.953578,
+          "recall": 0.90625,
+          "f1": 0.929312,
+          "precisionCi": [
+            0.931857,
+            0.968609
+          ],
+          "recallCi": [
+            0.878828,
+            0.927975
+          ]
+        },
+        "macro": {
+          "precision": 0.959971,
+          "recall": 0.905768,
+          "f1": 0.928451
+        }
+      },
+      "leak": {
+        "counted": 7726,
+        "leaked": 739,
+        "rate": 0.095651
+      },
+      "decoyHits": {
+        "all": {
+          "total": 590,
+          "hit": 20,
+          "rate": 0.033898
+        },
+        "byType": {
+          "order10": {
+            "total": 44,
+            "hit": 0,
+            "rate": 0
+          },
+          "order16": {
+            "total": 49,
+            "hit": 0,
+            "rate": 0
+          },
+          "utr12": {
+            "total": 47,
+            "hit": 0,
+            "rate": 0
+          },
+          "invoice": {
+            "total": 48,
+            "hit": 0,
+            "rate": 0
+          },
+          "timestamp": {
+            "total": 41,
+            "hit": 0,
+            "rate": 0
+          },
+          "epoch10": {
+            "total": 23,
+            "hit": 0,
+            "rate": 0
+          },
+          "epochms13": {
+            "total": 27,
+            "hit": 0,
+            "rate": 0
+          },
+          "price": {
+            "total": 62,
+            "hit": 0,
+            "rate": 0
+          },
+          "awb": {
+            "total": 26,
+            "hit": 0,
+            "rate": 0
+          },
+          "pnr": {
+            "total": 23,
+            "hit": 0,
+            "rate": 0
+          },
+          "otp": {
+            "total": 42,
+            "hit": 0,
+            "rate": 0
+          },
+          "pincode": {
+            "total": 30,
+            "hit": 0,
+            "rate": 0
+          },
+          "sku-pan": {
+            "total": 27,
+            "hit": 0,
+            "rate": 0
+          },
+          "coupon-ifsc": {
+            "total": 21,
+            "hit": 8,
+            "rate": 0.380952
+          },
+          "handle-local": {
+            "total": 28,
+            "hit": 12,
+            "rate": 0.428571
+          },
+          "version": {
+            "total": 52,
+            "hit": 0,
+            "rate": 0
+          }
+        }
+      },
+      "fpCategories": {
+        "decoy": 20,
+        "boundary": 0,
+        "type": 4,
+        "spurious": 0
+      },
+      "fnCategories": {
+        "boundary": 0,
+        "type": 4,
+        "missed": 47
+      },
+      "byFormat": {
+        "GSTIN": {
+          "standard": {
+            "support": 61,
+            "tp": 54,
+            "recall": 0.885246
+          }
+        },
+        "CARD": {
+          "4-4-4-1": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "4-4-4-4-hyphen": {
+            "support": 12,
+            "tp": 12,
+            "recall": 1
+          },
+          "4-4-4-4-space": {
+            "support": 23,
+            "tp": 23,
+            "recall": 1
+          },
+          "4-6-4": {
+            "support": 2,
+            "tp": 2,
+            "recall": 1
+          },
+          "contiguous": {
+            "support": 22,
+            "tp": 10,
+            "recall": 0.454545
+          }
+        },
+        "AADHAAR": {
+          "3-4-5": {
+            "support": 2,
+            "tp": 0,
+            "recall": 0
+          },
+          "4-3-5": {
+            "support": 5,
+            "tp": 0,
+            "recall": 0
+          },
+          "4-4-4-hyphen": {
+            "support": 7,
+            "tp": 6,
+            "recall": 0.857143
+          },
+          "4-4-4-space": {
+            "support": 37,
+            "tp": 36,
+            "recall": 0.972973
+          },
+          "contiguous": {
+            "support": 9,
+            "tp": 7,
+            "recall": 0.777778
+          }
+        },
+        "EMAIL": {
+          "plain": {
+            "support": 60,
+            "tp": 55,
+            "recall": 0.916667
+          }
+        },
+        "UPI": {
+          "known": {
+            "support": 48,
+            "tp": 43,
+            "recall": 0.895833
+          },
+          "unknown": {
+            "support": 12,
+            "tp": 11,
+            "recall": 0.916667
+          }
+        },
+        "PAN": {
+          "upper": {
+            "support": 62,
+            "tp": 62,
+            "recall": 1
+          }
+        },
+        "IFSC": {
+          "upper": {
+            "support": 61,
+            "tp": 61,
+            "recall": 1
+          }
+        },
+        "PHONE": {
+          "0091-space/2-4-4": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "91-space/10": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "91-space/3-3-4": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "91-space/5-5": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "none/10": {
+            "support": 4,
+            "tp": 4,
+            "recall": 1
+          },
+          "none/2-4-4": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "none/3-2-5": {
+            "support": 6,
+            "tp": 6,
+            "recall": 1
+          },
+          "none/3-3-4": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "none/5-5": {
+            "support": 22,
+            "tp": 22,
+            "recall": 1
+          },
+          "paren-plus91/10": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "paren-plus91/3-3-4": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "paren-plus91/5-5": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "plus91-hyphen/10": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "plus91-hyphen/5-5": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "plus91-space/10": {
+            "support": 4,
+            "tp": 4,
+            "recall": 1
+          },
+          "plus91-space/2-4-4": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "plus91-space/3-3-4": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "plus91-space/4-3-3": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "plus91-space/5-5": {
+            "support": 4,
+            "tp": 4,
+            "recall": 1
+          },
+          "plus91/10": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "zero/10": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          },
+          "zero/3-3-4": {
+            "support": 3,
+            "tp": 3,
+            "recall": 1
+          },
+          "zero/5-5": {
+            "support": 1,
+            "tp": 1,
+            "recall": 1
+          }
+        },
+        "BANK_ACCOUNT": {
+          "contiguous": {
+            "support": 22,
+            "tp": 14,
+            "recall": 0.636364
+          },
+          "groups-of-4-space": {
+            "support": 38,
+            "tp": 36,
+            "recall": 0.947368
+          }
+        }
+      },
+      "byNoise": {
+        "none": {
+          "support": 317,
+          "tp": 317,
+          "recall": 1
+        },
+        "ocr1": {
+          "support": 29,
+          "tp": 7,
+          "recall": 0.241379
+        },
+        "ocr2": {
+          "support": 33,
+          "tp": 33,
+          "recall": 1
+        },
+        "ocr3": {
+          "support": 4,
+          "tp": 0,
+          "recall": 0
+        },
+        "dspace": {
+          "support": 28,
+          "tp": 28,
+          "recall": 1
+        },
+        "nbsp": {
+          "support": 44,
+          "tp": 44,
+          "recall": 1
+        },
+        "spaced-hyphen": {
+          "support": 26,
+          "tp": 26,
+          "recall": 1
+        },
+        "lower": {
+          "support": 39,
+          "tp": 32,
+          "recall": 0.820513
+        },
+        "irregular": {
+          "support": 13,
+          "tp": 6,
+          "recall": 0.461538
+        },
+        "obfuscated-email": {
+          "support": 5,
+          "tp": 0,
+          "recall": 0
+        },
+        "spaced-upi": {
+          "support": 6,
+          "tp": 0,
+          "recall": 0
+        }
+      },
+      "byLanguage": {
+        "en": {
+          "support": 375,
+          "tp": 324,
+          "recall": 0.864
+        },
+        "hinglish": {
+          "support": 109,
+          "tp": 109,
+          "recall": 1
+        },
+        "hi-mixed": {
+          "support": 60,
+          "tp": 60,
+          "recall": 1
+        }
+      },
+      "confusion": {
+        "rows": [
+          "GSTIN",
+          "CARD",
+          "AADHAAR",
+          "EMAIL",
+          "UPI",
+          "PAN",
+          "IFSC",
+          "PHONE",
+          "BANK_ACCOUNT",
+          "NONE"
+        ],
+        "cols": [
+          "GSTIN",
+          "CARD",
+          "AADHAAR",
+          "EMAIL",
+          "UPI",
+          "PAN",
+          "IFSC",
+          "PHONE",
+          "BANK_ACCOUNT",
+          "MISSED"
+        ],
+        "counts": [
+          [
+            54,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            7
+          ],
+          [
+            0,
+            48,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            12
+          ],
+          [
+            0,
+            0,
+            49,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            11
+          ],
+          [
+            0,
+            0,
+            0,
+            55,
+            0,
+            0,
+            0,
+            0,
+            0,
+            5
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            54,
+            0,
+            0,
+            4,
+            0,
+            2
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            62,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            61,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            60,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            50,
+            10
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            12,
+            0,
+            8,
+            0,
+            0,
+            0
+          ]
+        ]
+      },
+      "sweep": [
+        {
+          "threshold": 0.3,
+          "precision": 0.644955,
+          "recall": 0.928309,
+          "f1": 0.761115
+        },
+        {
+          "threshold": 0.35,
+          "precision": 0.750371,
+          "recall": 0.928309,
+          "f1": 0.82991
+        },
+        {
+          "threshold": 0.4,
+          "precision": 0.750371,
+          "recall": 0.928309,
+          "f1": 0.82991
+        },
+        {
+          "threshold": 0.45,
+          "precision": 0.813205,
+          "recall": 0.928309,
+          "f1": 0.866953
+        },
+        {
+          "threshold": 0.5,
+          "precision": 0.953578,
+          "recall": 0.90625,
+          "f1": 0.929312
+        },
+        {
+          "threshold": 0.55,
+          "precision": 0.953307,
+          "recall": 0.900735,
+          "f1": 0.926276
+        },
+        {
+          "threshold": 0.6,
+          "precision": 0.952286,
+          "recall": 0.880515,
+          "f1": 0.914995
+        },
+        {
+          "threshold": 0.65,
+          "precision": 0.952191,
+          "recall": 0.878676,
+          "f1": 0.913958
+        },
+        {
+          "threshold": 0.7,
+          "precision": 0.951613,
+          "recall": 0.867647,
+          "f1": 0.907692
+        },
+        {
+          "threshold": 0.75,
+          "precision": 0.954751,
+          "recall": 0.775735,
+          "f1": 0.855984
+        },
+        {
+          "threshold": 0.8,
+          "precision": 0.954751,
+          "recall": 0.775735,
+          "f1": 0.855984
+        },
+        {
+          "threshold": 0.85,
+          "precision": 0.96962,
+          "recall": 0.704044,
+          "f1": 0.815761
+        },
+        {
+          "threshold": 0.9,
+          "precision": 1,
+          "recall": 0.628676,
+          "f1": 0.772009
+        }
+      ],
+      "presets": {
+        "lenient": {
+          "GSTIN": {
+            "precision": 1,
+            "recall": 0.885246
+          },
+          "CARD": {
+            "precision": 0.550459,
+            "recall": 1
+          },
+          "AADHAAR": {
+            "precision": 0.583333,
+            "recall": 0.816667
+          },
+          "EMAIL": {
+            "precision": 1,
+            "recall": 0.916667
+          },
+          "UPI": {
+            "precision": 0.658537,
+            "recall": 0.9
+          },
+          "PAN": {
+            "precision": 0.696629,
+            "recall": 1
+          },
+          "IFSC": {
+            "precision": 0.743902,
+            "recall": 1
+          },
+          "PHONE": {
+            "precision": 0.9375,
+            "recall": 1
+          },
+          "BANK_ACCOUNT": {
+            "precision": 0.925926,
+            "recall": 0.833333
+          }
+        },
+        "balanced": {
+          "GSTIN": {
+            "precision": 1,
+            "recall": 0.885246
+          },
+          "CARD": {
+            "precision": 1,
+            "recall": 0.8
+          },
+          "AADHAAR": {
+            "precision": 1,
+            "recall": 0.816667
+          },
+          "EMAIL": {
+            "precision": 1,
+            "recall": 0.916667
+          },
+          "UPI": {
+            "precision": 0.818182,
+            "recall": 0.9
+          },
+          "PAN": {
+            "precision": 1,
+            "recall": 1
+          },
+          "IFSC": {
+            "precision": 0.884058,
+            "recall": 1
+          },
+          "PHONE": {
+            "precision": 0.9375,
+            "recall": 1
+          },
+          "BANK_ACCOUNT": {
+            "precision": 1,
+            "recall": 0.833333
+          }
+        },
+        "strict": {
+          "GSTIN": {
+            "precision": 1,
+            "recall": 0.885246
+          },
+          "CARD": {
+            "precision": 1,
+            "recall": 0.7
+          },
+          "AADHAAR": {
+            "precision": 1,
+            "recall": 0.816667
+          },
+          "EMAIL": {
+            "precision": 1,
+            "recall": 0.916667
+          },
+          "UPI": {
+            "precision": 0.818182,
+            "recall": 0.9
+          },
+          "PAN": {
+            "precision": 1,
+            "recall": 0.919355
+          },
+          "IFSC": {
+            "precision": 0.884058,
+            "recall": 1
+          },
+          "PHONE": {
+            "precision": 0.925926,
+            "recall": 0.833333
+          },
+          "BANK_ACCOUNT": {
+            "precision": 1,
+            "recall": 0.833333
+          }
+        }
+      },
+      "failures": [
+        {
+          "kind": "FN",
+          "entity": "GSTIN",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0208",
+          "templateId": "a-kyc-03",
+          "format": "standard",
+          "noise": "lower",
+          "reasons": null,
+          "excerpt": "gstin ##aaaaa####a#aa pasted from the portal"
+        },
+        {
+          "kind": "FN",
+          "entity": "GSTIN",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0233",
+          "templateId": "a-kyc-03",
+          "format": "standard",
+          "noise": "lower",
+          "reasons": null,
+          "excerpt": "gstin ##aaaaa####a#aa pasted from the portal"
+        },
+        {
+          "kind": "FN",
+          "entity": "GSTIN",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0349",
+          "templateId": "a-kyc-03",
+          "format": "standard",
+          "noise": "lower",
+          "reasons": null,
+          "excerpt": "gstin ##aaaaa####a#aa pasted from the portal"
+        },
+        {
+          "kind": "FN",
+          "entity": "GSTIN",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0380",
+          "templateId": "a-kyc-03",
+          "format": "standard",
+          "noise": "lower",
+          "reasons": null,
+          "excerpt": "gstin ##aaaaa####a#aa pasted from the portal"
+        },
+        {
+          "kind": "FN",
+          "entity": "GSTIN",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0388",
+          "templateId": "a-kyc-03",
+          "format": "standard",
+          "noise": "lower",
+          "reasons": null,
+          "excerpt": "gstin ##aaaaa####a#aa pasted from the portal"
+        },
+        {
+          "kind": "FN",
+          "entity": "GSTIN",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0472",
+          "templateId": "a-kyc-03",
+          "format": "standard",
+          "noise": "lower",
+          "reasons": null,
+          "excerpt": "gstin ##aaaaa####a#a# pasted from the portal"
+        },
+        {
+          "kind": "FN",
+          "entity": "GSTIN",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0518",
+          "templateId": "a-kyc-03",
+          "format": "standard",
+          "noise": "lower",
+          "reasons": null,
+          "excerpt": "gstin ##aaaaa####a#aa pasted from the portal"
+        },
+        {
+          "kind": "FN",
+          "entity": "CARD",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0002",
+          "templateId": "a-payments-05",
+          "format": "contiguous",
+          "noise": "ocr1",
+          "reasons": null,
+          "excerpt": "card ##A############# declined, otp ###### expired"
+        },
+        {
+          "kind": "FN",
+          "entity": "CARD",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0011",
+          "templateId": "a-payments-05",
+          "format": "contiguous",
+          "noise": "ocr1",
+          "reasons": null,
+          "excerpt": "card ##a############# declined, otp ###### expired"
+        },
+        {
+          "kind": "FN",
+          "entity": "CARD",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0022",
+          "templateId": "a-payments-05",
+          "format": "contiguous",
+          "noise": "ocr1",
+          "reasons": null,
+          "excerpt": "card ####a########### declined, otp ###### expired"
+        },
+        {
+          "kind": "FN",
+          "entity": "CARD",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0095",
+          "templateId": "a-payments-05",
+          "format": "contiguous",
+          "noise": "ocr1",
+          "reasons": null,
+          "excerpt": "card #######a######## declined, otp ###### expired"
+        },
+        {
+          "kind": "FN",
+          "entity": "CARD",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0217",
+          "templateId": "a-payments-05",
+          "format": "contiguous",
+          "noise": "ocr1",
+          "reasons": null,
+          "excerpt": "card ##########A##### declined, otp ###### expired"
+        },
+        {
+          "kind": "FN",
+          "entity": "CARD",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0235",
+          "templateId": "a-payments-05",
+          "format": "contiguous",
+          "noise": "ocr1",
+          "reasons": null,
+          "excerpt": "card ##a############ declined, otp ###### expired"
+        },
+        {
+          "kind": "FN",
+          "entity": "CARD",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0283",
+          "templateId": "a-payments-05",
+          "format": "contiguous",
+          "noise": "ocr1",
+          "reasons": null,
+          "excerpt": "card #######A######## declined, otp ###### expired"
+        },
+        {
+          "kind": "FN",
+          "entity": "CARD",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0359",
+          "templateId": "a-payments-05",
+          "format": "contiguous",
+          "noise": "ocr1",
+          "reasons": null,
+          "excerpt": "card #######A######## declined, otp ###### expired"
+        },
+        {
+          "kind": "FN",
+          "entity": "CARD",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0370",
+          "templateId": "a-payments-05",
+          "format": "contiguous",
+          "noise": "ocr1",
+          "reasons": null,
+          "excerpt": "card ############A### declined, otp ###### expired"
+        },
+        {
+          "kind": "FN",
+          "entity": "CARD",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0464",
+          "templateId": "a-payments-05",
+          "format": "contiguous",
+          "noise": "ocr1",
+          "reasons": null,
+          "excerpt": "card #####A########## declined, otp ###### expired"
+        },
+        {
+          "kind": "FN",
+          "entity": "AADHAAR",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0077",
+          "templateId": "a-ocr-05",
+          "format": "4-4-4-hyphen",
+          "noise": "ocr3",
+          "reasons": null,
+          "excerpt": "UID ###A-##A#-##a#  DOB ##-##-####"
+        },
+        {
+          "kind": "FN",
+          "entity": "AADHAAR",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0137",
+          "templateId": "a-ocr-05",
+          "format": "4-4-4-space",
+          "noise": "ocr3",
+          "reasons": null,
+          "excerpt": "UID ##AA #### #A##  DOB # March ####"
+        },
+        {
+          "kind": "FN",
+          "entity": "AADHAAR",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0148",
+          "templateId": "a-kyc-04",
+          "format": "4-3-5",
+          "noise": "irregular",
+          "reasons": null,
+          "excerpt": "Aadhaar #### ### ##### was written in the wrong grou"
+        },
+        {
+          "kind": "FN",
+          "entity": "AADHAAR",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0236",
+          "templateId": "a-kyc-04",
+          "format": "3-4-5",
+          "noise": "irregular",
+          "reasons": null,
+          "excerpt": "Aadhaar ### #### ##### was written in the wrong grou"
+        },
+        {
+          "kind": "FN",
+          "entity": "AADHAAR",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0293",
+          "templateId": "a-kyc-04",
+          "format": "4-3-5",
+          "noise": "irregular",
+          "reasons": null,
+          "excerpt": "Aadhaar #### ### ##### was written in the wrong grou"
+        },
+        {
+          "kind": "FN",
+          "entity": "AADHAAR",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0314",
+          "templateId": "a-kyc-04",
+          "format": "3-4-5",
+          "noise": "irregular",
+          "reasons": null,
+          "excerpt": "Aadhaar ### #### ##### was written in the wrong grou"
+        },
+        {
+          "kind": "FN",
+          "entity": "AADHAAR",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0400",
+          "templateId": "a-kyc-04",
+          "format": "4-3-5",
+          "noise": "irregular",
+          "reasons": null,
+          "excerpt": "Aadhaar #### ### ##### was written in the wrong grou"
+        },
+        {
+          "kind": "FN",
+          "entity": "AADHAAR",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0475",
+          "templateId": "a-ocr-05",
+          "format": "contiguous",
+          "noise": "ocr3",
+          "reasons": null,
+          "excerpt": "UID ##A#####aA##  DOB ##-##-####"
+        },
+        {
+          "kind": "FN",
+          "entity": "AADHAAR",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0500",
+          "templateId": "a-kyc-04",
+          "format": "4-3-5",
+          "noise": "irregular",
+          "reasons": null,
+          "excerpt": "Aadhaar #### ### ##### was written in the wrong grou"
+        },
+        {
+          "kind": "FN",
+          "entity": "AADHAAR",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0521",
+          "templateId": "a-kyc-04",
+          "format": "4-3-5",
+          "noise": "irregular",
+          "reasons": null,
+          "excerpt": "Aadhaar #### ### ##### was written in the wrong grou"
+        },
+        {
+          "kind": "FN",
+          "entity": "EMAIL",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0158",
+          "templateId": "a-email-01",
+          "format": "plain",
+          "noise": "obfuscated-email",
+          "reasons": null,
+          "excerpt": "Contact me at aaaa_aaaaaaaaa [aa] aaaaaaa [aaa] aaa to avoid spam bots."
+        },
+        {
+          "kind": "FN",
+          "entity": "EMAIL",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0176",
+          "templateId": "a-email-01",
+          "format": "plain",
+          "noise": "obfuscated-email",
+          "reasons": null,
+          "excerpt": "Contact me at aaaa+aaaa [aa] aaaaaaa [aaa] aaa to avoid spam bots."
+        },
+        {
+          "kind": "FN",
+          "entity": "EMAIL",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0304",
+          "templateId": "a-email-01",
+          "format": "plain",
+          "noise": "obfuscated-email",
+          "reasons": null,
+          "excerpt": "Contact me at aaaaa_aaaaaaa [aa] aaaaaaa [aaa] aaa to avoid spam bots."
+        },
+        {
+          "kind": "FN",
+          "entity": "EMAIL",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0455",
+          "templateId": "a-email-01",
+          "format": "plain",
+          "noise": "obfuscated-email",
+          "reasons": null,
+          "excerpt": "Contact me at aaaaa+aaaa [aa] aa [aaa] aaaaaaa [aaa] aaa to avoid spam bots."
+        },
+        {
+          "kind": "FN",
+          "entity": "EMAIL",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0542",
+          "templateId": "a-email-01",
+          "format": "plain",
+          "noise": "obfuscated-email",
+          "reasons": null,
+          "excerpt": "Contact me at aaaaaaa.aaaaaaa [aa] aaaaaaa [aaa] aaaaaaa [aaa] aaa to avoid spam bots."
+        },
+        {
+          "kind": "FN",
+          "entity": "UPI",
+          "otherEntity": "PHONE",
+          "category": "type",
+          "docId": "adversarial-0016",
+          "templateId": "a-chat-01",
+          "format": "known",
+          "noise": "spaced-upi",
+          "reasons": [
+            "grouping:10"
+          ],
+          "excerpt": "pay me at ########## @ wasbi pls"
+        },
+        {
+          "kind": "FN",
+          "entity": "UPI",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0064",
+          "templateId": "a-chat-01",
+          "format": "known",
+          "noise": "spaced-upi",
+          "reasons": null,
+          "excerpt": "pay me at xxxxx## @ okaxis pls"
+        },
+        {
+          "kind": "FN",
+          "entity": "UPI",
+          "otherEntity": "PHONE",
+          "category": "type",
+          "docId": "adversarial-0088",
+          "templateId": "a-chat-01",
+          "format": "known",
+          "noise": "spaced-upi",
+          "reasons": [
+            "grouping:10"
+          ],
+          "excerpt": "pay me at ########## @ wasbi pls"
+        },
+        {
+          "kind": "FN",
+          "entity": "UPI",
+          "otherEntity": "PHONE",
+          "category": "type",
+          "docId": "adversarial-0151",
+          "templateId": "a-chat-01",
+          "format": "known",
+          "noise": "spaced-upi",
+          "reasons": [
+            "grouping:10"
+          ],
+          "excerpt": "pay me at ########## @ aubank pls"
+        },
+        {
+          "kind": "FN",
+          "entity": "UPI",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0296",
+          "templateId": "a-chat-01",
+          "format": "known",
+          "noise": "spaced-upi",
+          "reasons": null,
+          "excerpt": "pay me at xxxx.xxxxxxx @ wasbi pls"
+        },
+        {
+          "kind": "FN",
+          "entity": "UPI",
+          "otherEntity": "PHONE",
+          "category": "type",
+          "docId": "adversarial-0403",
+          "templateId": "a-chat-01",
+          "format": "unknown",
+          "noise": "spaced-upi",
+          "reasons": [
+            "grouping:10"
+          ],
+          "excerpt": "pay me at ########## @ okdemo pls"
+        },
+        {
+          "kind": "FP",
+          "entity": "UPI",
+          "otherEntity": null,
+          "category": "decoy",
+          "docId": "adversarial-0025",
+          "templateId": "a-logs-02",
+          "format": null,
+          "noise": null,
+          "reasons": [
+            "handle:unknown",
+            "context:upi"
+          ],
+          "excerpt": "user xxxxxxxxx@xxxxxxxxx changed upi to ##########@apl"
+        },
+        {
+          "kind": "FP",
+          "entity": "UPI",
+          "otherEntity": null,
+          "category": "decoy",
+          "docId": "adversarial-0044",
+          "templateId": "a-logs-02",
+          "format": null,
+          "noise": null,
+          "reasons": [
+            "handle:unknown",
+            "context:upi"
+          ],
+          "excerpt": "user xxxxxxxxx@xxxxxxxx changed upi to xxxx##@pthdfc "
+        },
+        {
+          "kind": "FP",
+          "entity": "UPI",
+          "otherEntity": null,
+          "category": "decoy",
+          "docId": "adversarial-0055",
+          "templateId": "a-logs-02",
+          "format": null,
+          "noise": null,
+          "reasons": [
+            "handle:unknown",
+            "context:upi"
+          ],
+          "excerpt": "user xxxxxx@xxxxxx changed upi to ##########@was"
+        },
+        {
+          "kind": "FP",
+          "entity": "UPI",
+          "otherEntity": null,
+          "category": "decoy",
+          "docId": "adversarial-0079",
+          "templateId": "a-logs-02",
+          "format": null,
+          "noise": null,
+          "reasons": [
+            "handle:unknown",
+            "context:upi"
+          ],
+          "excerpt": "user xxxxx@xxxxx changed upi to ##########@ici"
+        },
+        {
+          "kind": "FP",
+          "entity": "UPI",
+          "otherEntity": null,
+          "category": "decoy",
+          "docId": "adversarial-0229",
+          "templateId": "a-logs-02",
+          "format": null,
+          "noise": null,
+          "reasons": [
+            "handle:unknown",
+            "context:upi"
+          ],
+          "excerpt": "user xxxxxx@xxxxxx changed upi to ##########@ind"
+        },
+        {
+          "kind": "FP",
+          "entity": "UPI",
+          "otherEntity": null,
+          "category": "decoy",
+          "docId": "adversarial-0326",
+          "templateId": "a-logs-02",
+          "format": null,
+          "noise": null,
+          "reasons": [
+            "handle:unknown",
+            "context:upi"
+          ],
+          "excerpt": "user xxxxx@xxxxxxxxx changed upi to ##########@pnb"
+        },
+        {
+          "kind": "FP",
+          "entity": "UPI",
+          "otherEntity": null,
+          "category": "decoy",
+          "docId": "adversarial-0335",
+          "templateId": "a-logs-02",
+          "format": null,
+          "noise": null,
+          "reasons": [
+            "handle:unknown",
+            "context:upi"
+          ],
+          "excerpt": "user xxxxxx@xxxx changed upi to xxxxx.xxxxxxxx"
+        },
+        {
+          "kind": "FP",
+          "entity": "UPI",
+          "otherEntity": null,
+          "category": "decoy",
+          "docId": "adversarial-0362",
+          "templateId": "a-logs-02",
+          "format": null,
+          "noise": null,
+          "reasons": [
+            "handle:unknown",
+            "context:upi"
+          ],
+          "excerpt": "user xxxxxx@xxxxx changed upi to xxxxxx###@airt"
+        },
+        {
+          "kind": "FP",
+          "entity": "UPI",
+          "otherEntity": null,
+          "category": "decoy",
+          "docId": "adversarial-0428",
+          "templateId": "a-logs-02",
+          "format": null,
+          "noise": null,
+          "reasons": [
+            "handle:unknown",
+            "context:upi"
+          ],
+          "excerpt": "user xxxxx@xxxxxx changed upi to xxxxxx.x@icici"
+        },
+        {
+          "kind": "FP",
+          "entity": "UPI",
+          "otherEntity": null,
+          "category": "decoy",
+          "docId": "adversarial-0446",
+          "templateId": "a-logs-02",
+          "format": null,
+          "noise": null,
+          "reasons": [
+            "handle:unknown",
+            "context:upi"
+          ],
+          "excerpt": "user xxxxx@xxxxxxxx changed upi to xxxxx###@fakep"
+        },
+        {
+          "kind": "FP",
+          "entity": "IFSC",
+          "otherEntity": null,
+          "category": "decoy",
+          "docId": "adversarial-0003",
+          "templateId": "a-neg-07",
+          "format": null,
+          "noise": null,
+          "reasons": [
+            "structure:ifsc",
+            "case:upper"
+          ],
+          "excerpt": "A#### cannot be combined with AAAA#A##A##."
+        },
+        {
+          "kind": "FP",
+          "entity": "IFSC",
+          "otherEntity": null,
+          "category": "decoy",
+          "docId": "adversarial-0057",
+          "templateId": "a-neg-07",
+          "format": null,
+          "noise": null,
+          "reasons": [
+            "structure:ifsc",
+            "case:upper"
+          ],
+          "excerpt": "A###A cannot be combined with AAAA#######."
+        },
+        {
+          "kind": "FP",
+          "entity": "IFSC",
+          "otherEntity": null,
+          "category": "decoy",
+          "docId": "adversarial-0129",
+          "templateId": "a-neg-07",
+          "format": null,
+          "noise": null,
+          "reasons": [
+            "structure:ifsc",
+            "case:upper"
+          ],
+          "excerpt": "#A##A cannot be combined with AAAA#A####A."
+        },
+        {
+          "kind": "FP",
+          "entity": "IFSC",
+          "otherEntity": null,
+          "category": "decoy",
+          "docId": "adversarial-0321",
+          "templateId": "a-neg-07",
+          "format": null,
+          "noise": null,
+          "reasons": [
+            "structure:ifsc",
+            "case:upper"
+          ],
+          "excerpt": "##### cannot be combined with AAAA#A##A##."
+        },
+        {
+          "kind": "FP",
+          "entity": "IFSC",
+          "otherEntity": null,
+          "category": "decoy",
+          "docId": "adversarial-0432",
+          "templateId": "a-neg-07",
+          "format": null,
+          "noise": null,
+          "reasons": [
+            "structure:ifsc",
+            "case:upper"
+          ],
+          "excerpt": "##### cannot be combined with AAAA#######."
+        },
+        {
+          "kind": "FP",
+          "entity": "IFSC",
+          "otherEntity": null,
+          "category": "decoy",
+          "docId": "adversarial-0444",
+          "templateId": "a-neg-07",
+          "format": null,
+          "noise": null,
+          "reasons": [
+            "structure:ifsc",
+            "case:upper"
+          ],
+          "excerpt": "##### cannot be combined with AAAA######A."
+        },
+        {
+          "kind": "FP",
+          "entity": "IFSC",
+          "otherEntity": null,
+          "category": "decoy",
+          "docId": "adversarial-0561",
+          "templateId": "a-neg-07",
+          "format": null,
+          "noise": null,
+          "reasons": [
+            "structure:ifsc",
+            "case:upper"
+          ],
+          "excerpt": "##### cannot be combined with AAAA#######."
+        },
+        {
+          "kind": "FP",
+          "entity": "IFSC",
+          "otherEntity": null,
+          "category": "decoy",
+          "docId": "adversarial-0564",
+          "templateId": "a-neg-07",
+          "format": null,
+          "noise": null,
+          "reasons": [
+            "structure:ifsc",
+            "case:upper"
+          ],
+          "excerpt": "###A# cannot be combined with AAAA###AA##."
+        },
+        {
+          "kind": "FP",
+          "entity": "PHONE",
+          "otherEntity": "UPI",
+          "category": "type",
+          "docId": "adversarial-0016",
+          "templateId": "a-chat-01",
+          "format": "known",
+          "noise": "spaced-upi",
+          "reasons": [
+            "grouping:10"
+          ],
+          "excerpt": "pay me at ########## @ wasbi pls"
+        },
+        {
+          "kind": "FP",
+          "entity": "PHONE",
+          "otherEntity": "UPI",
+          "category": "type",
+          "docId": "adversarial-0088",
+          "templateId": "a-chat-01",
+          "format": "known",
+          "noise": "spaced-upi",
+          "reasons": [
+            "grouping:10"
+          ],
+          "excerpt": "pay me at ########## @ wasbi pls"
+        },
+        {
+          "kind": "FP",
+          "entity": "PHONE",
+          "otherEntity": "UPI",
+          "category": "type",
+          "docId": "adversarial-0151",
+          "templateId": "a-chat-01",
+          "format": "known",
+          "noise": "spaced-upi",
+          "reasons": [
+            "grouping:10"
+          ],
+          "excerpt": "pay me at ########## @ aubank pls"
+        },
+        {
+          "kind": "FP",
+          "entity": "PHONE",
+          "otherEntity": "UPI",
+          "category": "type",
+          "docId": "adversarial-0403",
+          "templateId": "a-chat-01",
+          "format": "unknown",
+          "noise": "spaced-upi",
+          "reasons": [
+            "grouping:10"
+          ],
+          "excerpt": "pay me at ########## @ okdemo pls"
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0008",
+          "templateId": "a-ocr-03",
+          "format": "contiguous",
+          "noise": "ocr1",
+          "reasons": null,
+          "excerpt": "A/C N# ######A#####  IFSC AAAA###AA##"
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0019",
+          "templateId": "a-ocr-03",
+          "format": "contiguous",
+          "noise": "ocr1",
+          "reasons": null,
+          "excerpt": "A/C N# ###A#########  IFSC AAAA#A###A#"
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0074",
+          "templateId": "a-ocr-03",
+          "format": "contiguous",
+          "noise": "ocr1",
+          "reasons": null,
+          "excerpt": "A/C N# ######a##  IFSC AAAA#######"
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0083",
+          "templateId": "a-ocr-03",
+          "format": "contiguous",
+          "noise": "ocr1",
+          "reasons": null,
+          "excerpt": "A/C N# #######A####  IFSC AAAA#A###AA"
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0100",
+          "templateId": "a-ocr-03",
+          "format": "contiguous",
+          "noise": "ocr1",
+          "reasons": null,
+          "excerpt": "A/C N# #########A###  IFSC AAAA#A##AA#"
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0118",
+          "templateId": "a-ocr-03",
+          "format": "contiguous",
+          "noise": "ocr1",
+          "reasons": null,
+          "excerpt": "A/C N# ###########a##  IFSC AAAA#######"
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0199",
+          "templateId": "a-ocr-03",
+          "format": "groups-of-4-space",
+          "noise": "ocr1",
+          "reasons": null,
+          "excerpt": "A/C N# #### #A###  IFSC AAAA#####A#"
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0367",
+          "templateId": "a-ocr-03",
+          "format": "contiguous",
+          "noise": "ocr1",
+          "reasons": null,
+          "excerpt": "A/C N# ###A#########  IFSC AAAA#####AA"
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0461",
+          "templateId": "a-ocr-03",
+          "format": "groups-of-4-space",
+          "noise": "ocr1",
+          "reasons": null,
+          "excerpt": "A/C N# #### ##A##  IFSC AAAA#AAA###"
+        },
+        {
+          "kind": "FN",
+          "entity": "BANK_ACCOUNT",
+          "otherEntity": null,
+          "category": "missed",
+          "docId": "adversarial-0560",
+          "templateId": "a-ocr-03",
+          "format": "contiguous",
+          "noise": "ocr1",
+          "reasons": null,
+          "excerpt": "A/C N# ########A#  IFSC AAAA###A#A#"
+        }
+      ]
+    }
+  },
+  "gateAccuracy": [
+    {
+      "id": "G01",
+      "set": "heldout",
+      "metric": "precision",
+      "entity": "AADHAAR",
+      "op": ">=",
+      "threshold": 0.97,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "id": "G02",
+      "set": "heldout",
+      "metric": "recall",
+      "entity": "AADHAAR",
+      "op": ">=",
+      "threshold": 0.95,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "id": "G03",
+      "set": "heldout",
+      "metric": "precision",
+      "entity": "PAN",
+      "op": ">=",
+      "threshold": 0.95,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "id": "G04",
+      "set": "heldout",
+      "metric": "recall",
+      "entity": "PAN",
+      "op": ">=",
+      "threshold": 0.95,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "id": "G05",
+      "set": "heldout",
+      "metric": "precision",
+      "entity": "PHONE",
+      "op": ">=",
+      "threshold": 0.95,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "id": "G06",
+      "set": "heldout",
+      "metric": "recall",
+      "entity": "PHONE",
+      "op": ">=",
+      "threshold": 0.9,
+      "value": 0.933775,
+      "pass": true
+    },
+    {
+      "id": "G07",
+      "set": "heldout",
+      "metric": "precision",
+      "entity": "EMAIL",
+      "op": ">=",
+      "threshold": 0.98,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "id": "G08",
+      "set": "heldout",
+      "metric": "recall",
+      "entity": "EMAIL",
+      "op": ">=",
+      "threshold": 0.98,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "id": "G09",
+      "set": "heldout",
+      "metric": "precision",
+      "entity": "UPI",
+      "op": ">=",
+      "threshold": 0.95,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "id": "G10",
+      "set": "heldout",
+      "metric": "recall",
+      "entity": "UPI",
+      "op": ">=",
+      "threshold": 0.9,
+      "value": 0.953333,
+      "pass": true
+    },
+    {
+      "id": "G11",
+      "set": "heldout",
+      "metric": "precision",
+      "entity": "IFSC",
+      "op": ">=",
+      "threshold": 0.95,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "id": "G12",
+      "set": "heldout",
+      "metric": "recall",
+      "entity": "IFSC",
+      "op": ">=",
+      "threshold": 0.95,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "id": "G13",
+      "set": "heldout",
+      "metric": "precision",
+      "entity": "CARD",
+      "op": ">=",
+      "threshold": 0.97,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "id": "G14",
+      "set": "heldout",
+      "metric": "recall",
+      "entity": "CARD",
+      "op": ">=",
+      "threshold": 0.95,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "id": "G15",
+      "set": "heldout",
+      "metric": "precision",
+      "entity": "GSTIN",
+      "op": ">=",
+      "threshold": 0.97,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "id": "G16",
+      "set": "heldout",
+      "metric": "recall",
+      "entity": "GSTIN",
+      "op": ">=",
+      "threshold": 0.95,
+      "value": 1,
+      "pass": true
+    },
+    {
+      "id": "G17",
+      "set": "heldout",
+      "metric": "precision",
+      "entity": "BANK_ACCOUNT",
+      "op": ">=",
+      "threshold": 0.9,
+      "value": 0.929577,
+      "pass": true
+    },
+    {
+      "id": "G18",
+      "set": "heldout",
+      "metric": "recall",
+      "entity": "BANK_ACCOUNT",
+      "op": ">=",
+      "threshold": 0.8,
+      "value": 0.88,
+      "pass": true
+    },
+    {
+      "id": "G19",
+      "set": "heldout",
+      "metric": "precision",
+      "entity": "ALL",
+      "op": ">=",
+      "threshold": 0.95,
+      "value": 0.992464,
+      "pass": true
+    },
+    {
+      "id": "G20",
+      "set": "heldout",
+      "metric": "recall",
+      "entity": "ALL",
+      "op": ">=",
+      "threshold": 0.92,
+      "value": 0.974112,
+      "pass": true
+    },
+    {
+      "id": "G21",
+      "set": "adversarial",
+      "metric": "decoy_hit_rate",
+      "entity": "ALL",
+      "op": "<=",
+      "threshold": 0.05,
+      "value": 0.033898,
+      "pass": true
+    },
+    {
+      "id": "G22",
+      "set": "adversarial",
+      "metric": "precision",
+      "entity": "ALL",
+      "op": ">=",
+      "threshold": 0.85,
+      "value": 0.953578,
+      "pass": true
+    },
+    {
+      "id": "G23",
+      "set": "adversarial",
+      "metric": "recall",
+      "entity": "ALL",
+      "op": ">=",
+      "threshold": 0.7,
+      "value": 0.90625,
+      "pass": true
+    }
+  ]
+}

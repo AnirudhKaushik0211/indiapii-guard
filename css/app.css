@@ -1,0 +1,123 @@
+/* IndiaPII Guard styles (SPEC 7.1, 7.7, 7.13). No animation, no external resources. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 16px 32px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #111111;
+  background: #ffffff;
+  overflow-wrap: break-word;
+}
+
+/* Focus: visible on every interactive element (WCAG 2.4.7 / 2.4.11). */
+:focus-visible { outline: 3px solid #1d4ed8; outline-offset: 2px; }
+
+[hidden] { display: none !important; }
+
+h1 { font-size: 1.6rem; margin: 0; }
+h2 { font-size: 1.35rem; margin: 16px 0 8px; }
+h3 { font-size: 1.1rem; margin: 20px 0 8px; }
+p { margin: 6px 0; }
+a { color: #1d4ed8; }
+code, .pg-mono { font-family: ui-monospace, "Cascadia Mono", Consolas, Menlo, monospace; }
+code { overflow-wrap: anywhere; }
+
+/* Skip link: visible when focused. */
+.pg-skip { position: absolute; left: -10000px; top: 0; }
+.pg-skip:focus, .pg-skip:focus-visible { left: 8px; top: 8px; background: #ffffff; color: #1d4ed8; padding: 8px; z-index: 10; }
+
+/* Header */
+#pg-header { padding: 16px 0 8px; border-bottom: 1px solid #6b6b6b; }
+#pg-tagline { margin: 4px 0 0; color: #4a4a4a; }
+
+/* Controls; targets at least 24 x 24 CSS px. */
+button, select, input, textarea { font: inherit; color: #111111; }
+button {
+  min-height: 24px; min-width: 24px; padding: 4px 12px;
+  border: 1px solid #6b6b6b; border-radius: 4px; background: #ffffff; cursor: pointer;
+}
+button:disabled { color: #4a4a4a; background: #f2f2f2; cursor: not-allowed; }
+button.pg-primary { background: #1d4ed8; border-color: #1d4ed8; color: #ffffff; }
+button.pg-primary:disabled { background: #f2f2f2; border-color: #6b6b6b; color: #4a4a4a; }
+select { min-height: 24px; padding: 4px 6px; border: 1px solid #6b6b6b; border-radius: 4px; background: #ffffff; max-width: 100%; }
+textarea {
+  display: block; width: 100%; max-width: 100%; min-height: 24px; padding: 6px 8px;
+  border: 1px solid #6b6b6b; border-radius: 4px; background: #ffffff; resize: vertical; font-size: 0.9rem;
+}
+textarea[aria-invalid="true"] { border: 2px solid #9b1c1c; }
+input[type="checkbox"], input[type="radio"] { width: 24px; height: 24px; margin: 0 6px 0 0; flex: 0 0 auto; }
+
+.pg-field { margin: 10px 0; }
+.pg-field > label { display: block; font-weight: 600; }
+.pg-hint { color: #4a4a4a; font-size: 0.9rem; }
+.pg-err { color: #9b1c1c; font-weight: 600; margin: 2px 0; }
+.pg-note { color: #4a4a4a; border-left: 3px solid #6b6b6b; padding-left: 8px; }
+.pg-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 8px 0; }
+.pg-row select { flex: 1 1 160px; min-width: 0; }
+.pg-buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+.pg-check { display: flex; align-items: flex-start; min-height: 24px; margin: 6px 0; }
+.pg-check label { min-height: 24px; }
+.pg-check .pg-hint { display: block; }
+
+fieldset { border: 1px solid #6b6b6b; border-radius: 4px; margin: 10px 0; padding: 6px 10px; min-width: 0; }
+legend { font-weight: 600; padding: 0 4px; }
+
+/* Status line */
+#pg-status { min-height: 36px; padding: 6px 0; }
+
+/* Tabs */
+#pg-tablist { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; border-bottom: 2px solid #1d4ed8; }
+[role="tab"] { border-radius: 4px 4px 0 0; border-bottom: none; padding: 8px 16px; min-height: 40px; }
+[role="tab"][aria-selected="true"] { background: #1d4ed8; color: #ffffff; border-color: #1d4ed8; font-weight: 600; }
+
+/* Layout: one column, two columns at 960 px and wider */
+.pg-cols { display: block; }
+.pg-col { min-width: 0; }
+@media (min-width: 960px) {
+  .pg-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+}
+
+/* Tables */
+div.pg-scroll { overflow-x: auto; max-width: 100%; }
+table { border-collapse: collapse; margin: 8px 0; min-width: 100%; }
+caption { text-align: left; font-weight: 600; padding: 4px 0; }
+th, td { border: 1px solid #c8c8c8; padding: 4px 8px; text-align: left; vertical-align: top; }
+th { background: #f2f2f2; }
+#pg-findings td { overflow-wrap: break-word; }
+/* Only the long free-text cells may break anywhere, so the table fits its column and short cells
+   (Confidence, Where, Redact, tokens, headers) keep whole words. */
+#pg-findings td:nth-child(3), #pg-findings td:nth-child(5),
+#pg-map-table td:nth-child(3) { overflow-wrap: anywhere; }
+
+/* Highlight (SPEC 7.7) */
+#pg-highlight {
+  white-space: pre-wrap; overflow-wrap: anywhere; min-height: 4rem; max-height: 32rem; overflow-y: auto;
+  border: 1px solid #6b6b6b; border-radius: 4px; padding: 6px 8px; font-size: 0.9rem;
+}
+.pg-mark, .pg-swatch { color: #111111; outline: 1px solid #555555; }
+.pg-mark { padding: 0 1px; }
+.pg-swatch { display: inline-block; width: 12px; height: 12px; margin-right: 6px; vertical-align: middle; }
+.pg-tag { color: #4a4a4a; font-size: 0.8rem; margin-left: 2px; }
+.pg-e-gstin { background: #e6f0c2; }
+.pg-e-card { background: #ffd9c2; }
+.pg-e-aadhaar { background: #ffe08a; }
+.pg-e-email { background: #e7d7ff; }
+.pg-e-upi { background: #ffd6e7; }
+.pg-e-pan { background: #c7f0d8; }
+.pg-e-ifsc { background: #d9f2f2; }
+.pg-e-phone { background: #cfe3ff; }
+.pg-e-bank_account { background: #f0e0c8; }
+.pg-mark.pg-kept { background: #ffffff; }
+
+details { margin: 12px 0; }
+summary { cursor: pointer; min-height: 24px; font-weight: 600; }
+
+/* Footer */
+#pg-footer { border-top: 1px solid #6b6b6b; margin-top: 32px; padding-top: 8px; color: #4a4a4a; }

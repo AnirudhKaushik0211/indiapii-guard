@@ -1,0 +1,17 @@
+{
+  "name": "indiapii-guard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Detect and redact Indian personal data (Aadhaar, PAN, UPI, phone, cards) in text before it goes into an LLM prompt. Runs in your browser.",
+  "license": "MIT",
+  "type": "commonjs",
+  "scripts": {
+    "test": "node --test \"test/**/*.test.cjs\"",
+    "eval": "node scripts/eval.cjs",
+    "bench:browser": "node scripts/bench-browser.cjs",
+    "smoke": "node scripts/ui-smoke.cjs",
+    "screenshots": "node scripts/capture-screenshots.cjs",
+    "redact": "node scripts/redact.cjs",
+    "package": "node scripts/package-public.cjs --require-local"
+  }
+}

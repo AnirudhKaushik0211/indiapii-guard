@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' file:; style-src 'self' file:; img-src 'self' data: file:; connect-src 'none'; font-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IndiaPII Guard - redact Indian personal data before it reaches an LLM</title>
+<link rel="stylesheet" href="css/app.css">
+<script src="js/validators.js" defer></script>
+<script src="js/lexicon.js" defer></script>
+<script src="js/detector.js" defer></script>
+<script src="js/redactor.js" defer></script>
+<script src="js/prng.js" defer></script>
+<script src="js/synth.js" defer></script>
+<script src="js/samples.js" defer></script>
+<script src="js/guard.js" defer></script>
+<script src="js/ui.js" defer></script>
+</head>
+<body>
+<a id="pg-skip" class="pg-skip" href="#pg-main">Skip to content</a>
+
+<header id="pg-header">
+  <h1 id="pg-title">IndiaPII Guard</h1>
+  <p id="pg-tagline">Find and redact Aadhaar, PAN, UPI, phone, card and bank details before you paste text into an LLM. Runs in your browser; nothing is uploaded or stored.</p>
+</header>
+
+<div id="pg-status" role="status" aria-live="polite"><span id="pg-status-text"></span> <button type="button" id="pg-undo" hidden>Undo</button></div>
+
+<div id="pg-tablist" role="tablist" aria-label="Sections">
+  <button type="button" role="tab" id="pg-tab-help" aria-selected="true" aria-controls="pg-panel-help" tabindex="0">Help</button>
+  <button type="button" role="tab" id="pg-tab-redact" aria-selected="false" aria-controls="pg-panel-redact" tabindex="-1">Redact</button>
+  <button type="button" role="tab" id="pg-tab-settings" aria-selected="false" aria-controls="pg-panel-settings" tabindex="-1">Settings</button>
+</div>
+
+<main id="pg-main" tabindex="-1">
+
+<section id="pg-panel-help" role="tabpanel" aria-labelledby="pg-tab-help">
+  <h2>Help</h2>
+
+  <h3 id="pg-help-what">What it does</h3>
+  <p>IndiaPII Guard finds Indian personal identifiers in text, such as Aadhaar, PAN, UPI IDs, mobile, card and bank account numbers. It replaces them with tokens or masks, so you can paste the redacted text into an LLM prompt. Everything runs in this page; your text is never uploaded.</p>
+  <p class="pg-buttons">
+    <button type="button" id="pg-help-start" class="pg-primary">Start redacting</button>
+    <button type="button" id="pg-help-try">Try a sample</button>
+  </p>
+
+  <h3>Quick start</h3>
+  <ol>
+    <li>Paste or type your text into the Redact tab.</li>
+    <li>Review the highlighted findings and the table.</li>
+    <li>Untick a row to keep that value unredacted.</li>
+    <li>Copy the redacted text and paste it into the LLM.</li>
+  </ol>
+
+  <h3>What it detects</h3>
+  <div class="pg-scroll">
+    <table id="pg-help-entities">
+      <caption>Supported identifiers</caption>
+      <thead><tr><th scope="col">Identifier</th><th scope="col">Rule</th><th scope="col">Validator</th><th scope="col">Example</th></tr></thead>
+      <tbody>
+        <tr><td>GSTIN</td><td>15 characters: 2-digit state code, the holder's PAN, an entity number, usually Z, and a check character</td><td>GSTIN check character</td><td><code>27ABCPE1234F1ZB</code> (synthetic example)</td></tr>
+        <tr><td>Card number</td><td>13 to 19 digits starting with 2 to 6, written together or in usual groups</td><td>Luhn check digit</td><td><code>4111 1111 1111 1111</code> (synthetic example; public test card)</td></tr>
+        <tr><td>Aadhaar number</td><td>12 digits, together or as 4-4-4, not starting with 0 or 1</td><td>Verhoeff check digit</td><td><code>2345 6789 0124</code> (synthetic example)</td></tr>
+        <tr><td>E-mail address</td><td>name&#64;domain with a dot in the domain</td><td>Structure only</td><td><code>asha.samplekar@example.com</code> (synthetic example)</td></tr>
+        <tr><td>UPI ID</td><td>name&#64;handle without a dot in the handle; known handles score higher</td><td>Handle list</td><td><code>asha.samplekar@okaxis</code> (synthetic example)</td></tr>
+        <tr><td>PAN</td><td>5 letters, 4 digits, 1 letter; the 4th letter is the holder type</td><td>Structure and holder letter</td><td><code>ABCPE1234F</code> (synthetic example)</td></tr>
+        <tr><td>IFSC</td><td>4 letters, the digit 0, then 6 letters or digits</td><td>Structure only</td><td><code>ABCD0123456</code> (synthetic example)</td></tr>
+        <tr><td>Mobile number</td><td>10 digits starting with 6 to 9, with an optional +91, 91 or 0 prefix</td><td>Prefix and grouping</td><td><code>+91 98765 43210</code> (synthetic example)</td></tr>
+        <tr><td>Bank account number</td><td>9 to 18 digits; found only with a nearby word such as "a/c" or "account"</td><td>Context only</td><td><code>50100012345678</code> (synthetic example)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>An address is an e-mail if the part after @ contains a dot, and a UPI ID if it does not. One address is never reported as both.</p>
+  <p class="pg-hint">Sources (plain text): Verhoeff (1969), Error Detecting Decimal Codes; UIDAI public material on the Aadhaar number; Luhn (1960), US Patent 2,950,048, and ISO/IEC 7812-1; Income Tax Department public descriptions of the PAN; Reserve Bank of India public descriptions of the IFSC; GST portal public descriptions of the GSTIN; NPCI public material on UPI addresses; RFC 5322, RFC 2606 and RFC 6761; WAI-ARIA Authoring Practices (Tabs) and WCAG 2.2 (W3C).</p>
+
+  <h3>How confidence works</h3>
+  <p>Each candidate starts with a base score from its structure and check digit. Context words nearby raise it, for example "aadhaar", "pan card", "mobile", "a/c", "khata number" or "call karna". Negative context such as "order", "otp" or "invoice" lowers it, because the number is probably a reference number. A finding is shown when its score reaches the threshold: Lenient (0.35), Balanced (0.50, the default) or Strict (0.70). The confidence is a rule-based score, not a probability.</p>
+
+  <h3>Redaction styles</h3>
+  <ul>
+    <li>Token: <code>2345 6789 0124</code> (synthetic example) becomes <code>[AADHAAR_1]</code>.</li>
+    <li>Mask: every letter and digit becomes X, so it becomes <code>XXXX XXXX XXXX</code>.</li>
+    <li>Partial: only the last 4 characters stay, so it becomes <code>XXXX XXXX 0124</code>.</li>
+  </ul>
+  <p>Tokens are consistent within one text: the same value always gets the same token. They are not linkable across texts, because numbering starts again for each text. The token map, which links tokens to the original values, stays in this page.</p>
+
+  <h3>Turning entities off</h3>
+  <p>Unticking an identifier in Settings removes its findings after detection. A number that matched a disabled identifier is not passed on to another identifier, so it stays in the text unredacted.</p>
+
+  <h3>Privacy</h3>
+  <p>No network requests (blocked by a Content Security Policy and checked by automated tests). Nothing is uploaded or stored. The browser's localStorage holds only the "help seen" flag and, if you opt in, your settings, never your text. The clipboard and browser extensions are outside the page's control.</p>
+
+  <h3>Limitations</h3>
+  <ul>
+    <li>Names and addresses are not detected.</li>
+    <li>Formats outside the rules above are not detected.</li>
+    <li>Numbers written in Devanagari digits are not detected.</li>
+    <li>Aadhaar VID, landline numbers and passport numbers are not detected in this version.</li>
+    <li>Aadhaar numbers that fail the checksum (mistyped numbers) are not flagged.</li>
+    <li>A 91-prefixed mobile number written without + or a space may be labelled as an Aadhaar number; it is still redacted.</li>
+    <li>A 12-digit bank account number that happens to pass the Aadhaar checksum (about 1 in 10 such numbers) may be labelled as an Aadhaar number when an Aadhaar label is nearby; it is still redacted.</li>
+    <li>The confidence is not a probability.</li>
+    <li>The published accuracy was measured on synthetic, self-constructed text.</li>
+  </ul>
+
+  <h3>Not legal advice</h3>
+  <p>IndiaPII Guard helps reduce the personal data you share. It does not make any processing lawful or compliant with the Digital Personal Data Protection Act, 2023 or any other law. It is not legal advice.</p>
+
+  <h3>Accuracy</h3>
+  <p>The evaluation report (docs/EVAL-REPORT.md in the repository) lists precision, recall, failures and the release-gate result, measured on synthetic data.</p>
+
+  <h3>Synthetic data</h3>
+  <p>Sample texts use randomly generated identifiers with valid structure and check digits. They are not linked to any person; any match with a real number would be coincidental.</p>
+</section>
+
+<section id="pg-panel-redact" role="tabpanel" aria-labelledby="pg-tab-redact" hidden>
+  <h2>Redact</h2>
+  <div class="pg-cols">
+    <div class="pg-col">
+      <div class="pg-row">
+        <label for="pg-sample-select">Sample text</label>
+        <select id="pg-sample-select"></select>
+        <button type="button" id="pg-sample-load">Load sample</button>
+        <button type="button" id="pg-clear">Clear</button>
+      </div>
+      <p id="pg-sample-note" class="pg-note" hidden></p>
+      <div class="pg-field">
+        <label for="pg-input">Text to check</label>
+        <textarea id="pg-input" class="pg-mono" rows="12" spellcheck="false" autocomplete="off" aria-describedby="pg-input-hint pg-input-err"></textarea>
+        <p id="pg-input-hint" class="pg-hint">Paste or type. Up to 200,000 characters. Nothing is uploaded.</p>
+        <p id="pg-input-err" class="pg-err" hidden></p>
+        <p id="pg-count" class="pg-hint">0 / 200,000 characters</p>
+      </div>
+      <h3>Highlighted</h3>
+      <div id="pg-highlight" class="pg-mono" role="region" aria-label="Text with findings highlighted" tabindex="0"></div>
+    </div>
+    <div class="pg-col">
+      <p id="pg-summary">Paste some text to start.</p>
+      <p id="pg-timing" class="pg-hint"></p>
+      <div class="pg-scroll">
+        <table id="pg-findings">
+          <caption>Findings</caption>
+          <thead><tr><th scope="col">#</th><th scope="col">Entity</th><th scope="col">Text</th><th scope="col">Confidence</th><th scope="col">Why</th><th scope="col">Where</th><th scope="col">Redact</th></tr></thead>
+          <tbody id="pg-findings-body"></tbody>
+        </table>
+      </div>
+      <h3><label for="pg-output">Redacted text</label></h3>
+      <textarea id="pg-output" class="pg-mono" rows="12" readonly></textarea>
+      <p class="pg-buttons"><button type="button" id="pg-copy" class="pg-primary">Copy redacted text</button></p>
+      <details id="pg-map">
+        <summary>Token map (stays in this page)</summary>
+        <div id="pg-map-token">
+          <div class="pg-scroll">
+            <table id="pg-map-table">
+              <caption>Token map</caption>
+              <thead><tr><th scope="col">Token</th><th scope="col">Entity</th><th scope="col">Original</th><th scope="col">Occurrences</th></tr></thead>
+              <tbody id="pg-map-body"></tbody>
+            </table>
+          </div>
+          <p class="pg-note">This table contains the original values. Do not paste it into the LLM.</p>
+        </div>
+        <p id="pg-map-other" hidden>Token map is available with the Token style.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="pg-panel-settings" role="tabpanel" aria-labelledby="pg-tab-settings" hidden>
+  <h2>Settings</h2>
+  <fieldset>
+    <legend>Detect these</legend>
+    <div class="pg-check"><input type="checkbox" id="pg-set-ent-gstin" checked><label for="pg-set-ent-gstin">GSTIN <span class="pg-hint">15 characters with a valid check character</span></label></div>
+    <div class="pg-check"><input type="checkbox" id="pg-set-ent-card" checked><label for="pg-set-ent-card">Card number <span class="pg-hint">13 to 19 digits with a valid Luhn check digit</span></label></div>
+    <div class="pg-check"><input type="checkbox" id="pg-set-ent-aadhaar" checked><label for="pg-set-ent-aadhaar">Aadhaar number <span class="pg-hint">12 digits with a valid Verhoeff check digit</span></label></div>
+    <div class="pg-check"><input type="checkbox" id="pg-set-ent-email" checked><label for="pg-set-ent-email">E-mail address <span class="pg-hint">name&#64;domain with a dot in the domain</span></label></div>
+    <div class="pg-check"><input type="checkbox" id="pg-set-ent-upi" checked><label for="pg-set-ent-upi">UPI ID <span class="pg-hint">name&#64;handle, for example a bank's UPI handle</span></label></div>
+    <div class="pg-check"><input type="checkbox" id="pg-set-ent-pan" checked><label for="pg-set-ent-pan">PAN <span class="pg-hint">5 letters, 4 digits, 1 letter</span></label></div>
+    <div class="pg-check"><input type="checkbox" id="pg-set-ent-ifsc" checked><label for="pg-set-ent-ifsc">IFSC <span class="pg-hint">4 letters, the digit 0, 6 letters or digits</span></label></div>
+    <div class="pg-check"><input type="checkbox" id="pg-set-ent-phone" checked><label for="pg-set-ent-phone">Mobile number <span class="pg-hint">10 digits starting with 6 to 9, optional +91 prefix</span></label></div>
+    <div class="pg-check"><input type="checkbox" id="pg-set-ent-bank-account" checked><label for="pg-set-ent-bank-account">Bank account number <span class="pg-hint">9 to 18 digits next to an account word</span></label></div>
+  </fieldset>
+  <fieldset>
+    <legend>Redaction style</legend>
+    <div class="pg-check"><input type="radio" name="pg-style" id="pg-set-style-token" value="token" checked><label for="pg-set-style-token">Token: Aadhaar 2345 6789 0124 becomes [AADHAAR_1]</label></div>
+    <div class="pg-check"><input type="radio" name="pg-style" id="pg-set-style-mask" value="mask"><label for="pg-set-style-mask">Mask: Aadhaar 2345 6789 0124 becomes XXXX XXXX XXXX</label></div>
+    <div class="pg-check"><input type="radio" name="pg-style" id="pg-set-style-partial" value="partial"><label for="pg-set-style-partial">Partial: Aadhaar 2345 6789 0124 becomes XXXX XXXX 0124</label></div>
+  </fieldset>
+  <fieldset>
+    <legend>Threshold</legend>
+    <div class="pg-check"><input type="radio" name="pg-threshold" id="pg-set-th-lenient" value="lenient"><label for="pg-set-th-lenient">Lenient (0.35): catches more, more false alarms</label></div>
+    <div class="pg-check"><input type="radio" name="pg-threshold" id="pg-set-th-balanced" value="balanced" checked><label for="pg-set-th-balanced">Balanced (0.50)</label></div>
+    <div class="pg-check"><input type="radio" name="pg-threshold" id="pg-set-th-strict" value="strict"><label for="pg-set-th-strict">Strict (0.70): fewer false alarms, may miss more</label></div>
+  </fieldset>
+  <div class="pg-check"><input type="checkbox" id="pg-set-ocr" checked><label for="pg-set-ocr">Read O as 0 and l/I as 1 inside long numbers (scanned or OCR text)</label></div>
+  <div class="pg-check"><input type="checkbox" id="pg-set-remember"><label for="pg-set-remember">Remember these settings on this device (stores settings only, never your text)</label></div>
+  <p class="pg-buttons"><button type="button" id="pg-set-reset">Reset settings</button></p>
+  <p id="pg-set-preview">Preview: Aadhaar 2345 6789 0124 -&gt; [AADHAAR_1]</p>
+  <p class="pg-note">The Aadhaar number 2345 6789 0124 in these style examples and the preview is a synthetic example.</p>
+</section>
+
+</main>
+
+<footer id="pg-footer">
+  <p>IndiaPII Guard 1.0.0 - MIT licence - your text never leaves this page. Not legal advice.</p>
+</footer>
+</body>
+</html>
